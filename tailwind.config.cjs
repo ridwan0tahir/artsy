@@ -10,7 +10,7 @@ module.exports = {
         rubik: ["Rubik", "sans-serif"],
         stix: ["STIX Two Text", "serif"],
         satoshi: ["Satoshi", "sans-serif"],
-        clash: ['Clash Display', 'sans-serif']
+        clash: ["Clash Display", "sans-serif"],
       },
 
       fontSize: {
@@ -38,9 +38,15 @@ module.exports = {
       },
 
       colors: {
-        "text-01": "hsla(0, 0%, 0%, 1)",
-        "text-02": "hsla(0, 0%, 16%, 1)",
+        "black-01": "hsla(0, 0%, 0%, 1)",
+        "black-02": "hsla(0, 0%, 16%, 1)",
+        "black-03": "hsla(0, 0%, 20%, 1)",
         "white-01": "hsla(0, 0%, 100%, 1)",
+        "blue-01": "hsla(234, 58%, 48%, 1)",
+      },
+
+      width: {
+        "w-90": "90%",
       },
     },
   },
