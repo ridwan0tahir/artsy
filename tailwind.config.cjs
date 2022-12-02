@@ -41,6 +41,8 @@ module.exports = {
         "black-01": "hsla(0, 0%, 0%, 1)",
         "black-02": "hsla(0, 0%, 16%, 1)",
         "black-03": "hsla(0, 0%, 20%, 1)",
+        "black-04": "hsla(0, 0%, 38%, 1)",
+        "black-05": "hsla(0, 0%, 0%, 0.6)",
         "white-01": "hsla(0, 0%, 100%, 1)",
         "blue-01": "hsla(234, 58%, 48%, 1)",
       },

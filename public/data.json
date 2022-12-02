@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "id": "product-01",
+      "name": "The Boolean Egyptian",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "creators_id": [
+        "creator-01",
+        "creator-02",
+        "creator-03",
+        "creator-04",
+        "creator-05"
+      ]
+    }
+  ]
+}
