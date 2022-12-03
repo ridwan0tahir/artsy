@@ -24,9 +24,9 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
   return (
     <div className="">
       <article>
-        <div className="relative mb-4 group">
+        <div className="relative h-[15.9875rem] mb-4 group">
           <img
-            className="w-full h-[255.8px] object-cover object-center"
+            className="w-full h-full object-cover object-center"
             src={cover}
             alt={name}
           />
@@ -64,7 +64,7 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
           ))}
         </ul>
         <p className="text-fs-30 font-semibold text-black-01 flex-wrap whitespace-nowrap">
-          64 major creators
+          64 major curators
         </p>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { FunctionComponent, ReactNode } from "react";
 
 interface ISection {
@@ -12,7 +13,7 @@ const Section: FunctionComponent<ISection> = ({
   content,
 }) => {
   return (
-    <section className={className}>
+    <section className={classNames("pb-24", className)}>
       {label && (
         <h2 className="font-satoshi font-bold text-fs-60 leading-lh-70 mb-8">
           {label}
