@@ -3,14 +3,123 @@
     {
       "id": "product-01",
       "name": "The Boolean Egyptian",
+      "cover": "",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
-      "creators_id": [
-        "creator-01",
-        "creator-02",
-        "creator-03",
-        "creator-04",
-        "creator-05"
-      ]
+      "country": "Egypt",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$135.90",
+      "featured": true
+    },
+    {
+      "id": "product-02",
+      "name": "The First Men",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Egypt",
+      "creator_id": "creator-02",
+      "status": ["Auction", "Sale"],
+      "price": "$138.90",
+      "featured": true
+    },
+    {
+      "id": "product-03",
+      "name": "Le' Sparta",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Italy",
+      "creator_id": "creator-03",
+      "status": ["Auction", "Sale"],
+      "price": "$158.70",
+      "featured": true
+    },
+    {
+      "id": "product-04",
+      "name": "Philomena' 22",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Australia",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
+    },
+    {
+      "id": "product-05",
+      "name": "Blanc",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Australia",
+      "creator_id": "creator-06",
+      "status": ["Auction", "Sale"],
+      "price": "$25.10",
+      "featured": false
+    },
+    {
+      "id": "product-06",
+      "name": "Ellipsia",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "United States",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
+    },
+    {
+      "id": "product-07",
+      "name": "The Law Makers",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Australia",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$18.90",
+      "featured": false
+    },
+    {
+      "id": "product-08",
+      "name": "Veil",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Germany",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
+    },
+    {
+      "id": "product-09",
+      "name": "Alternating",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "Japan",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
+    },
+    {
+      "id": "product-10",
+      "name": "Rosemary' 22",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "England",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
+    },
+    {
+      "id": "product-11",
+      "name": "Beverly",
+      "cover": "",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "country": "South Korea",
+      "creator_id": "creator-01",
+      "status": ["Auction", "Sale"],
+      "price": "$38.90",
+      "featured": false
     }
   ]
 }

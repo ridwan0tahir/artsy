@@ -14,7 +14,7 @@ const Section: FunctionComponent<ISection> = ({
   return (
     <section className={className}>
       {label && (
-        <h2 className="font-satoshi font-bold text-fs-60 leading-lh-70">
+        <h2 className="font-satoshi font-bold text-fs-60 leading-lh-70 mb-8">
           {label}
         </h2>
       )}

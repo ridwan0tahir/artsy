@@ -10,6 +10,7 @@ import ButtonIcon from "./ButtonIcon";
 import NavLinks from "providers/NavProvider";
 import Close from "components/icons/Close";
 import Chat from "components/icons/Chat";
+import { useLayoutEffect } from "react";
 
 interface IHeader {}
 
@@ -17,6 +18,14 @@ const Header = () => {
   const [navActive, toggleNavActive, setNavActive] = useToggle(false);
 
   const location = useLocation();
+
+  useLayoutEffect(() => {
+    if (navActive) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [navActive]);
 
   return (
     <div className="w-[90%] mx-auto py-5 flex justify-between items-center lg:py-12 md:w-10/12">
@@ -32,8 +41,8 @@ const Header = () => {
 
       <nav
         className={classNames(
-          "absolute top-0 h-full w-full flex flex-col gap-12 py-5 px-[5%] bg-white-01\
-          ease-in-out duration-200 lg:unset",
+          "absolute top-0 h-screen w-screen flex flex-col gap-12 py-5 px-[5%] bg-white-01\
+          z-40 ease-in-out duration-200 lg:unset",
           {
             ["-left-[1000px] invisible"]: !navActive,
             ["left-0 visible"]: navActive,
