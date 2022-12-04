@@ -2,16 +2,21 @@ import Section from "components/layouts/Section";
 import FeaturedProductCard from "components/views/products/FeaturedProductCard";
 import HeroImages from "providers/HeroImages";
 import Products from "providers/ProductProvider";
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
+import { useHover } from "usehooks-ts";
 
 const Home = () => {
   const products = useMemo(() => {
     return Products.filter((product) => product.featured);
   }, []);
 
+  const imageListRef = useRef<HTMLUListElement>(null);
+  const hover = useHover(imageListRef);
+
   return (
     <div className="w-[90%] mx-auto">
       <Section
+        className="overflow-hidden"
         content={
           <>
             <article className="text-center mb-14">
@@ -24,14 +29,22 @@ const Home = () => {
                 to get top access.
               </p>
             </article>
-            <ul className="relative h-[20rem] bg-white-02">
+            <ul
+              ref={imageListRef}
+              className="relative h-[18.875rem] group hover:flex hover:gap-4
+              hover:overflow-x-auto hover:snap-mandatory hover:snap-x"
+            >
+              {/* ease-[cubic-bezier(0.05, 0.43, 0.25, 0.95)] duration-700 */}
+
               {HeroImages.map((image) => (
                 <li
                   key={image.src}
-                  className="w-[90%] mx-auto h-[18.875rem] absolute top-0 
-                  left-1/2 -translate-x-1/2 origin-left"
+                  className="w-[85%] min-w-[85%] mx-auto h-[18.875rem] absolute top-0 left-1/2
+                  -translate-x-1/2 origin-left  group-hover:static group-hover:translate-x-0 
+                  group-hover:snap-center [transition:rotate_.5s_ease-in,transform.3s] 
+                  group-hover:[transition:rotate_.5s_ease-out]"
                   style={{
-                    rotate: `${image.rotate}deg`,
+                    rotate: !hover ? `${image.rotate}deg` : "0deg",
                     zIndex: `${image.index}`,
                   }}
                 >
