@@ -43,14 +43,28 @@ module.exports = {
         "black-03": "hsla(0, 0%, 20%, 1)",
         "black-04": "hsla(0, 0%, 38%, 1)",
         "black-05": "hsla(0, 0%, 0%, 0.6)",
+        "black-06": "hsla(0, 0%, 9%, 1)",
         "white-01": "hsla(0, 0%, 100%, 1)",
         "white-02": "hsla(0, 0%, 85%, 0.6)",
         "blue-01": "hsla(234, 58%, 48%, 1)",
         "blue-02": "hsla(191, 24%, 57%, 1)",
+        "blue-03": "hsla(200, 100%, 32%, 1)",
       },
 
       width: {
         "w-90": "90%",
+      },
+
+      keyframes: {
+        accord: {
+          "0%": { transform: "scaleY(0)" },
+          "50%": { transform: "scaleY(0.5)" },
+          "100%": { transform: "scaleY(1)" },
+        },
+      },
+
+      animation: {
+        accord: "accord 1s ease-in-out",
       },
     },
   },

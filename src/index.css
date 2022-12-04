@@ -33,4 +33,10 @@
   .personsGrid li:nth-child(5) {
     grid-area: 1 / 9 / 2 / 12;
   }
+
+  .btn-primary {
+    @apply py-4 px-14 bg-blue-01 text-white-01 rounded-md 
+    hover:ring-1 hover:ring-black-01 hover:text-black-01
+    hover:bg-transparent;
+  }
 }

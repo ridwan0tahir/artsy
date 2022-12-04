@@ -4,6 +4,7 @@ import Auction from "pages/Auction";
 import Drop from "pages/Drop";
 import Home from "pages/Home";
 import Marketplace from "pages/Marketplace";
+import Product from "pages/Product";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/marketplace/:productId" element={<Product />} />
           <Route path="/auction" element={<Auction />} />
           <Route path="/drop" element={<Drop />} />
         </Routes>
