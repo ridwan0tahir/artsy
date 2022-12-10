@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     extend: {
       fontFamily: {
@@ -65,6 +65,10 @@ module.exports = {
 
       animation: {
         accord: "accord 1s ease-in-out",
+      },
+
+      gridTemplateColumns: {
+        fluid: "repeat(auto-fill, minmax(15rem, 1fr))",
       },
     },
   },

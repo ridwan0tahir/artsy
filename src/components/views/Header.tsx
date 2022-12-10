@@ -6,7 +6,7 @@ import Cart from "components/icons/Cart";
 import Menu from "components/icons/Menu";
 import Notification from "components/icons/Notification";
 import Search from "components/icons/Search";
-import ButtonIcon from "./ButtonIcon";
+import ButtonIcon from "../common/ButtonIcon";
 import NavLinks from "providers/NavProvider";
 import Close from "components/icons/Close";
 import Chat from "components/icons/Chat";
@@ -41,7 +41,7 @@ const Header = () => {
 
       <nav
         className={classNames(
-          "absolute top-0 h-screen w-screen flex flex-col gap-12 py-5 px-[5%] bg-white-01\
+          "absolute top-0 h-full w-full flex flex-col gap-12 py-5 px-[5%] bg-white-01\
           z-40 ease-in-out duration-200 lg:unset",
           {
             ["-left-[1000px] invisible"]: !navActive,

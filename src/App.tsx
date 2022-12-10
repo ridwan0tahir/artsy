@@ -1,9 +1,9 @@
 import Footer from "components/views/Footer";
 import Header from "components/views/Header";
-import Auction from "pages/Auction";
-import Drop from "pages/Drop";
-import Home from "pages/Home";
-import Marketplace from "pages/Marketplace";
+import Auction from "pages/auction/Auction";
+import Drop from "pages/drop/Drop";
+import Home from "pages/home/Home";
+import Marketplace from "pages/marketplace/Marketplace";
 import Product from "pages/Product";
 import { Route, Routes } from "react-router-dom";
 

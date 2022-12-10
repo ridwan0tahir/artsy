@@ -5,11 +5,16 @@
       "name": "The Boolean Egyptian",
       "cover": "",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
+      "views": "1,234",
       "country": "Egypt",
       "creator_id": "creator-01",
       "status": ["Auction", "Sale"],
       "price": "$135.90",
-      "featured": true
+      "featured": true,
+      "collection": {
+        "id": 1,
+        "title": "Editorial"
+      }
     },
     {
       "id": "product-02",

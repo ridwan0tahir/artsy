@@ -1,23 +1,15 @@
 import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 
 interface IButtonIcon {
+  content: ReactNode;
+  id?: string;
   type?: "button" | "submit" | "reset";
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  content: ReactNode;
 }
 
-const ButtonIcon: FunctionComponent<IButtonIcon> = ({
-  type,
-  onClick,
-  content,
-  className,
-}) => {
-  return (
-    <button type={type} onClick={onClick} className={className}>
-      {content}
-    </button>
-  );
+const ButtonIcon: FunctionComponent<IButtonIcon> = (props) => {
+  return <button {...props}>{props.content}</button>;
 };
 
 export default ButtonIcon;

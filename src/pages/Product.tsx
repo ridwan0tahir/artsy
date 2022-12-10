@@ -1,10 +1,22 @@
 import classNames from "classnames";
 import Section from "components/layouts/Section";
+import CollectionCard from "components/views/products/CollectionCard";
 import { useState, FunctionComponent } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+import ButtonIcon from "components/common/ButtonIcon";
+import Chevron from "components/icons/Chevron";
+import FavThin from "components/icons/FavThin";
+import Next from "components/icons/Next";
 
 const Product: FunctionComponent = () => {
-  const param = useParams();
+  const param = useLocation();
+
+  console.log(param.pathname);
 
   const [activeItem, setActiveItem] = useState(0);
 
@@ -34,7 +46,10 @@ const Product: FunctionComponent = () => {
           <button type="button" className="btn-primary">
             Add to cart
           </button>
-          <button className="py-4 px-5 border border-black-06">Fav</button>
+          <ButtonIcon
+            className="p-4 border border-black-06 rounded-md"
+            content={<FavThin />}
+          />
         </div>
       </form>
     </div>
@@ -72,19 +87,18 @@ const Product: FunctionComponent = () => {
   ];
 
   return (
-    <div className="text-black-03 text-fs-30 leading-lh-50">
+    <div className="w-[90%] mx-auto text-black-03 text-fs-30 leading-lh-50">
       <Section
-        className="w-[90%] mx-auto"
         content={
           <article>
-            <div className="h-[55vh]">
+            <div className="h-[50vh] min-h-[20rem] mb-4">
               <img
                 className="w-full h-full object-cover"
                 src="https://res.cloudinary.com/yheenca/image/upload/v1669896798/artsy/product/4764a7daa106cda4888b058654d2bf6f_b5w6au.jpg"
                 alt="Image"
               />
             </div>
-            <div className="flex items-center justify-between mb-7 uppercase">
+            <div className="flex items-center justify-between mb-3 uppercase">
               <p>The Boolean Egyptian</p>
               <p>$22.89</p>
             </div>
@@ -105,13 +119,38 @@ const Product: FunctionComponent = () => {
                     onClick={() => setActiveItem(index)}
                   >
                     {item.title}
-                    <span>-</span>
+                    <ButtonIcon content={<Chevron />} />
                   </div>
                   {item.content(activeItem === index)}
                 </li>
               ))}
             </ul>
           </article>
+        }
+      />
+
+      <Section
+        label="More from this collection"
+        content={
+          <Swiper
+            className="mySwiper"
+            navigation={{
+              nextEl: "",
+              prevEl: "",
+              disabledClass: "",
+            }}
+            modules={[Navigation]}
+          >
+            <SwiperSlide>
+              <CollectionCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CollectionCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CollectionCard />
+            </SwiperSlide>
+          </Swiper>
         }
       />
     </div>

@@ -1,4 +1,4 @@
-import ViewIcon from "components/views/ViewIcon";
+import ViewIcon from "components/common/ViewIcon";
 import { FunctionComponent } from "react";
 
 interface IClose {
