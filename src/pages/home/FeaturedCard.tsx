@@ -3,6 +3,7 @@ import { FunctionComponent, useMemo } from "react";
 import Arrow from "components/icons/Arrow";
 import ButtonIcon from "../../components/common/ButtonIcon";
 import Curators from "providers/CuratorProvider";
+import LinkButton from "components/common/LinkButton";
 
 interface IFeaturedCard {
   name: string;
@@ -96,7 +97,8 @@ const Description = ({ name, description, curators }: IDescription) => (
         64 major curators
       </p>
 
-      <ButtonIcon
+      <LinkButton
+        href="/marketplace/1"
         className="w-[4.875rem] h-[4.875rem] rounded-full border border-black-03 ml-auto
         items-center justify-center hover:bg-white-01/10 ease-linear duration-500
         hidden lg:flex"
