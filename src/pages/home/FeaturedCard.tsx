@@ -1,7 +1,6 @@
 import { FunctionComponent, useMemo } from "react";
 
 import Arrow from "components/icons/Arrow";
-import ButtonIcon from "../../components/common/ButtonIcon";
 import Curators from "providers/CuratorProvider";
 import LinkButton from "components/common/LinkButton";
 
@@ -52,7 +51,8 @@ const Image = ({ cover, name }: IImage) => (
       <h3 className="font-clash text-fs-60 font-semibold text-white-01 text-right">
         {name}
       </h3>
-      <ButtonIcon
+      <LinkButton
+        href="/marketplace/1"
         className="w-[4.875rem] h-[4.921875rem] rounded-full border border-white-01 
         flex items-center justify-center hover:bg-white-01/20 ease-linear duration-500"
         content={<Arrow className="overflow-hidden" />}

@@ -72,9 +72,9 @@ const Home = () => {
                 nextEl: "#upcomingBtnNext",
                 prevEl: "#upcomingBtnPrev",
               }}
-              speed={5000}
+              speed={3000}
               autoplay={{
-                delay: 10000,
+                delay: 7000,
                 disableOnInteraction: false,
               }}
               modules={[EffectFade, Autoplay, Navigation, Pagination]}
@@ -100,6 +100,29 @@ const Home = () => {
         ].map((nav) => (
           <ExplorePagesContent {...nav} key={nav.content} />
         ))}
+      />
+
+      <Section
+        content={
+          <div className="bg-black-07">
+            <article className="w-[90%] mx-auto">
+              <h5
+                className="mb-4 max-w-[264px] font-clash text-fs-50 font-semibold 
+                leading-lh-70 uppercase"
+              >
+                Top Creator of the week
+              </h5>
+              <p>
+                “Everything always looked better in black and white. Everything
+                always as if it were the first time; there’s always more people
+                in a black and white photograph. It just makes it seem that
+                there were more people at a gig, more people at a football
+                match, than with colour photography. Everything looks more
+                exciting.”– Jack Lowden
+              </p>
+            </article>
+          </div>
+        }
       />
     </>
   );
