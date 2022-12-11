@@ -1,30 +1,27 @@
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent } from "react";
 
 import Arrow from "components/icons/Arrow";
-import Curators from "providers/CuratorProvider";
 import LinkButton from "components/common/LinkButton";
 
 interface IFeaturedCard {
+  id: string;
   name: string;
   cover: string;
   description: string;
-  curators_id: string[];
+  creators: { id: string; name: string; photo: string }[];
 }
 
 const FeaturedCard: FunctionComponent<IFeaturedCard> = ({
+  id,
   name,
   cover,
   description,
-  curators_id,
+  creators,
 }) => {
-  const curators = useMemo(() => {
-    return Curators.filter((curator) => curators_id.includes(curator.id));
-  }, []);
-
   return (
     <>
       <Image name={name} cover={cover} />
-      <Description name={name} description={description} curators={curators} />
+      <Description name={name} description={description} creators={creators} />
     </>
   );
 };
@@ -37,13 +34,13 @@ interface IImage {
   name: string;
 }
 const Image = ({ cover, name }: IImage) => (
-  <div className="relative h-[15.9875rem] mb-4 group lg:m-0 ">
+  <figure className="relative h-[15.9875rem] mb-4 group lg:m-0">
     <img
       className="w-full h-full object-cover object-center"
       src={cover}
       alt={name}
     />
-    <div
+    <figcaption
       className="bg-black-05 absolute top-0 left-0 w-full h-full p-[5%]
       flex flex-col items-end justify-around invisible opacity-0 group-hover:opacity-100
       group-hover:visible ease-in-out duration-1000 lg:flex-row lg:justify-center lg:gap-10
@@ -61,8 +58,8 @@ const Image = ({ cover, name }: IImage) => (
         flex items-center justify-center hover:bg-white-01/20 ease-linear duration-500"
         content={<Arrow className="overflow-hidden" />}
       />
-    </div>
-  </div>
+    </figcaption>
+  </figure>
 );
 
 /*
@@ -71,10 +68,10 @@ const Image = ({ cover, name }: IImage) => (
 interface IDescription {
   name: string;
   description: string;
-  curators: { id: string; src: string; alt: string }[];
+  creators: { id: string; name: string; photo: string }[];
 }
-const Description = ({ name, description, curators }: IDescription) => (
-  <div className="lg:flex lg:flex-col lg:justify-between lg:group-even:order-first">
+const Description = ({ name, description, creators }: IDescription) => (
+  <article className="lg:flex lg:flex-col lg:justify-between lg:group-even/order:order-first">
     <h3 className="font-stix font-bold text-fs-80 hidden lg:block">{name}</h3>
     <p className="font-normal text-black-04 leading-lh-40">{description}</p>
 
@@ -83,15 +80,15 @@ const Description = ({ name, description, curators }: IDescription) => (
       w-min lg:w-full lg:border-transparent"
     >
       <ul className="personsGrid max-w-[12.5rem]">
-        {curators.map((curator) => (
+        {creators.map((creator) => (
           <li
-            key={curator.id}
+            key={creator.id}
             className="w-10 h-10 rounded-full overflow-hidden border border-blue-02"
           >
             <img
               className="w-full h-full"
-              src={curator.src}
-              alt={curator.alt}
+              src={creator.photo}
+              alt="Art Creator"
             />
           </li>
         ))}
@@ -109,7 +106,7 @@ const Description = ({ name, description, curators }: IDescription) => (
         content={<Arrow color="#616161" className="overflow-hidden" />}
       />
     </div>
-  </div>
+  </article>
 );
 
 export default FeaturedCard;

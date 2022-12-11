@@ -12,7 +12,7 @@ interface ISwiperWrapper {
     delay: number;
     disableOnInteraction: boolean;
   };
-  products: typeof Products;
+  images: string[];
 }
 
 const SwiperWrapper = (props: ISwiperWrapper) => {
@@ -25,13 +25,13 @@ const SwiperWrapper = (props: ISwiperWrapper) => {
       spaceBetween={30}
       className="w-[358px]"
     >
-      {props.products.map((product, index) => (
-        <SwiperSlide key={index}>
+      {props.images.map((image, index) => (
+        <SwiperSlide key={image + index}>
           <div className="h-[428px]">
             <img
               className="w-full h-full object-cover"
-              src={product.cover}
-              alt={product.name}
+              src={image}
+              alt="Display Image"
             />
           </div>
         </SwiperSlide>

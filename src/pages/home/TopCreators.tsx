@@ -8,7 +8,7 @@ export const TopCreatorsArticle = () => (
     </h5>
     <p
       className="text-fs-10 text-black-08 mt-4 lg:mt-[170px]
-    lg:text-[2rem] leading-[41.6px] font-[200]"
+    lg:text-[2rem] lg:leading-[41.6px] font-[200]"
     >
       “Everything always looked better in black and white. Everything always as
       if it were the first time; there’s always more people in a black and white

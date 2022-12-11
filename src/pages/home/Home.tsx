@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,8 +7,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 
-import Products from "providers/ProductProvider";
-import HeroImages from "providers/HeroImages";
+import {
+  HeroMobileImages,
+  HeroDesktopImages,
+  AuctionDisplayImages,
+} from "data/DisplayImages";
 import Section from "components/layouts/Section";
 import FeaturedProductCard from "pages/home/FeaturedCard";
 import { HeroIntro, HeroMobileDisplay, HeroDesktopDisplay } from "./Hero";
@@ -19,10 +22,17 @@ import {
 } from "./UpcomingAuction";
 import { ExplorePagesContent } from "./ExplorePages";
 import { TopCreatorsArticle, TopCreatorsDisplay } from "./TopCreators";
+import { ProductContext } from "providers/ProductProvider";
 
 const Home = () => {
-  const products = useMemo(() => {
-    return Products.filter((product) => product.featured);
+  const { products } = useContext(ProductContext);
+
+  const [heroDestopImages] = useState(HeroDesktopImages);
+  const [heroMobileImages] = useState(HeroMobileImages);
+  const [auctionImages] = useState(AuctionDisplayImages);
+
+  const featuredProduct = useMemo(() => {
+    return products.slice(0, 3);
   }, []);
 
   const matches = useMediaQuery("(min-width:1024px)");
@@ -34,9 +44,9 @@ const Home = () => {
           <div className="flex flex-col space-y-20">
             <HeroIntro />
             {matches ? (
-              <HeroDesktopDisplay products={products} />
+              <HeroDesktopDisplay images={heroDestopImages} />
             ) : (
-              <HeroMobileDisplay images={HeroImages} />
+              <HeroMobileDisplay images={heroMobileImages} />
             )}
           </div>
         }
@@ -47,13 +57,19 @@ const Home = () => {
         className="w-[90%] lg:w-[80%] mx-auto"
         content={
           <ul role="list">
-            {products.map((product) => (
+            {featuredProduct.map((product) => (
               <li
                 key={product.id}
                 className="py-8 lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:grid-flow-dense 
-                lg:gap-14 group lg:py-14 lg:border-t lg:border-black-01"
+                lg:gap-14 group/order lg:py-14 lg:border-t lg:border-black-01"
               >
-                <FeaturedProductCard {...product} />
+                <FeaturedProductCard
+                  id={product.id}
+                  name={product.name}
+                  cover={product.image_url}
+                  description={product.description}
+                  creators={product.creators}
+                />
               </li>
             ))}
           </ul>
@@ -83,9 +99,9 @@ const Home = () => {
               rewind={true}
               className="h-[336px] lg:h-[568px]"
             >
-              {products.map((product) => (
-                <SwiperSlide key={product.cover}>
-                  <UpcomingAuctionDisplay cover={product.cover} />
+              {auctionImages.map((image, index) => (
+                <SwiperSlide key={image + index}>
+                  <UpcomingAuctionDisplay cover={image} />
                 </SwiperSlide>
               ))}
             </Swiper>

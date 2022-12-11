@@ -1,8 +1,5 @@
 import { useState } from "react";
 import SwiperCore from "swiper";
-
-import Products from "providers/ProductProvider";
-import HeroImages from "providers/HeroImages";
 import SwiperWrapper from "components/common/SwiperWrapper";
 
 export const HeroIntro = () => (
@@ -21,24 +18,24 @@ export const HeroIntro = () => (
 );
 
 interface IHeroMobileDisplay {
-  images: typeof HeroImages;
+  images: string[];
 }
 
 export const HeroMobileDisplay = ({ images }: IHeroMobileDisplay) => (
   <ul className="relative h-[18.875rem] group w-[90%] mx-auto">
-    {images.map((image) => (
+    {images.map((image, index) => (
       <li
-        key={image.src}
+        key={image}
         className="w-[85%] min-w-[85%] mx-auto h-[18.875rem] absolute top-0 left-1/2
         -translate-x-1/2 origin-left [transition:rotate_.5s_ease-in]"
         style={{
-          rotate: `${image.rotate}deg`,
-          zIndex: `${image.index}`,
+          rotate: index === 0 ? "0deg" : index === 1 ? "9.31deg" : "-9.31deg",
+          zIndex: index === 0 ? 3 : index === 1 ? 2 : 1,
         }}
       >
         <img
           className="w-full h-full object-cover object-center"
-          src={image.src}
+          src={image}
           alt="Hero Image"
         />
       </li>
@@ -47,10 +44,10 @@ export const HeroMobileDisplay = ({ images }: IHeroMobileDisplay) => (
 );
 
 interface IHeroDesktopDisplay {
-  products: typeof Products;
+  images: string[];
 }
 
-export const HeroDesktopDisplay = ({ products }: IHeroDesktopDisplay) => {
+export const HeroDesktopDisplay = ({ images }: IHeroDesktopDisplay) => {
   const [swipers, setSwipers] = useState<SwiperCore[]>([]);
 
   const handleSetSwipers = (swiper: SwiperCore) => {
@@ -61,7 +58,7 @@ export const HeroDesktopDisplay = ({ products }: IHeroDesktopDisplay) => {
   return (
     <div className="flex gap-10">
       <SwiperWrapper
-        products={products}
+        images={images}
         speed={1000}
         autoplay={{ delay: 1000, disableOnInteraction: false }}
         initialSlide={0}
@@ -73,13 +70,13 @@ export const HeroDesktopDisplay = ({ products }: IHeroDesktopDisplay) => {
       />
 
       <SwiperWrapper
-        products={products}
+        images={images}
         initialSlide={1}
         onSwiper={handleSetSwipers}
       />
 
       <SwiperWrapper
-        products={products}
+        images={images}
         initialSlide={2}
         onSwiper={handleSetSwipers}
       />
