@@ -46,11 +46,15 @@ const Image = ({ cover, name }: IImage) => (
     <div
       className="bg-black-05 absolute top-0 left-0 w-full h-full p-[5%]
       flex flex-col items-end justify-around invisible opacity-0 group-hover:opacity-100
-      group-hover:visible ease-in-out duration-1000 lg:hidden"
+      group-hover:visible ease-in-out duration-1000 lg:flex-row lg:justify-center lg:gap-10
+      lg:items-center"
     >
-      <h3 className="font-clash text-fs-60 font-semibold text-white-01 text-right">
+      <h3 className="font-clash text-fs-60 font-semibold text-white-01 text-right lg:hidden">
         {name}
       </h3>
+      <span className="font-clash text-fs-60 font-semibold text-white-01 hidden lg:block">
+        View product
+      </span>
       <LinkButton
         href="/marketplace/1"
         className="w-[4.875rem] h-[4.921875rem] rounded-full border border-white-01 
