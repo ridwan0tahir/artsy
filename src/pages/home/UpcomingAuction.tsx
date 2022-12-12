@@ -49,19 +49,22 @@ export const UpcomingAuctionDisplay: FunctionComponent<
   IUpcomingAuctionDisplay
 > = ({ images }) => (
   <Swiper
-    className="h-[336px] lg:h-[568px]"
     allowTouchMove={false}
-    speed={3000}
-    modules={[EffectFade, Navigation, Pagination]}
-    effect={"fade"}
+    speed={2000}
+    modules={[EffectFade, Autoplay, Navigation, Pagination]}
+    effect="fade"
     rewind={true}
     navigation={{
       nextEl: "#upcomingBtnNext",
       prevEl: "#upcomingBtnPrev",
     }}
+    autoplay={{
+      delay: 5000,
+      disableOnInteraction: false,
+    }}
   >
-    {images.map((image, index) => (
-      <SwiperSlide key={index}>
+    {images.map((image) => (
+      <SwiperSlide key={image}>
         <UpcomingAuctionImage cover={image} />
       </SwiperSlide>
     ))}
@@ -72,60 +75,59 @@ interface IUpcomingAuctionImage {
   cover: string;
 }
 
-const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => {
-  return (
-    <figure className="w-full h-full">
-      <img
-        className="w-full h-full object-cover"
-        src={cover}
-        alt="Auction Images"
-      />
+const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
+  <figure className="w-full h-[336px] lg:h-[568px]">
+    <img
+      className="w-full h-full object-cover"
+      src={cover}
+      alt="Auction Images"
+      loading="lazy"
+    />
 
-      <figcaption
-        className="absolute bottom-0 left-0 grid auto-cols-auto py-8 w-full h-full
+    <figcaption
+      className="absolute bottom-0 left-0 grid auto-cols-auto py-8 w-full h-full
         auto-grid-auto justify-items-center space-x-4 z-[30] px-2 lg:grid-rows-1 
-        lg:h-auto lg:px-8 lg:py-12 "
-      >
-        <h4
-          className="col-start-1 col-end-2 font-bellefair text-fs-80 font-normal 
+        lg:h-auto lg:px-8 lg:py-12 lg:space-x-4"
+    >
+      <h4
+        className="col-start-1 col-end-2 font-bellefair text-fs-80 font-normal 
           self-center lg:text-[4.829rem]"
-        >
-          01
-        </h4>
-        <article
-          className="col-start-2 col-end-3 flex flex-col space-y-4 max-w-[628.85px]
+      >
+        01
+      </h4>
+      <article
+        className="col-start-2 col-end-3 flex flex-col space-y-4 max-w-[628.85px]
           uppercase"
-        >
-          <h3 className="font-bellefair text-fs-40 font-normal lg:text-fs-60">
-            MONALISA REDEFINED IN STYLE.
-          </h3>
-          <p className="font-poppins text-fs-10 lg:text-fs-20">
-            Start on : 08:00 GTS . Monday{" "}
-          </p>
-          <p className="text-fs-20 lg:text-fs-30">
-            GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH INVESTORS
-            AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR HIGHEST AND LOWEST
-            BIDS.
-          </p>
-        </article>
-        <div
-          className="col-start-2 col-end-3 flex items-center font-normal justify-self-end 
+      >
+        <h3 className="font-bellefair text-fs-40 font-normal lg:text-fs-60">
+          MONALISA REDEFINED IN STYLE.
+        </h3>
+        <p className="font-poppins text-fs-10 lg:text-fs-20">
+          Start on : 08:00 GTS . Monday{" "}
+        </p>
+        <p className="text-fs-20 lg:text-fs-30">
+          GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH INVESTORS
+          AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR HIGHEST AND LOWEST
+          BIDS.
+        </p>
+      </article>
+      <div
+        className="col-start-2 col-end-3 flex items-center font-normal justify-self-end 
           space-x-7 lg:col-start-3 lg:col-end-4 lg:self-end lg:space-x-7 mt-3 text-fs-20 
           lg:text-fs-50"
-        >
-          <LinkButton
-            className="border-b-2 border-white "
-            href="#"
-            content={"See more"}
-          />
-          <LinkButton
-            className="p-2 border border-white rounded-lg"
-            href="#"
-            content={"Set a reminder"}
-          />
-        </div>
-      </figcaption>
-      <div className="imageGradient absolute left-0 top-0 w-full h-full z-20"></div>
-    </figure>
-  );
-};
+      >
+        <LinkButton
+          className="border-b-2 border-white "
+          href="#"
+          content={"See more"}
+        />
+        <LinkButton
+          className="p-2 border border-white rounded-lg"
+          href="#"
+          content={"Set a reminder"}
+        />
+      </div>
+    </figcaption>
+    <div className="imageGradient absolute left-0 top-0 w-full h-full z-20"></div>
+  </figure>
+);

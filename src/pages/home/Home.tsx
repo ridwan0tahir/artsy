@@ -4,7 +4,7 @@ import { useMediaQuery } from "usehooks-ts";
 import {
   HeroMobileImages,
   HeroDesktopImages,
-  AuctionDisplayImages,
+  UpcomingAuctionImages,
 } from "data/DisplayImages";
 import Section from "components/layouts/Section";
 import FeaturedProductCard from "pages/home/FeaturedCard";
@@ -73,7 +73,7 @@ const Home = () => {
             relative text-white-01"
           >
             <UpcomingAuctionHeader />
-            <UpcomingAuctionDisplay images={AuctionDisplayImages} />
+            {<UpcomingAuctionDisplay images={HeroDesktopImages} />}
             <UpcomingAuctionFooter />
           </div>
         }

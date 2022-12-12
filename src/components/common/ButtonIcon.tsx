@@ -8,8 +8,15 @@ interface IButtonIcon {
   className?: string;
 }
 
-const ButtonIcon: FunctionComponent<IButtonIcon> = (props) => {
-  return <button {...props}>{props.content}</button>;
+const ButtonIcon: FunctionComponent<IButtonIcon> = ({
+  id,
+  content,
+  type,
+  onClick,
+  className,
+}) => {
+  const config = { id, type, onClick, className };
+  return <button {...config}>{content}</button>;
 };
 
 export default ButtonIcon;

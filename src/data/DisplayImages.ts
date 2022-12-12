@@ -11,9 +11,9 @@ export const HeroDesktopImages = [
   "https://res.cloudinary.com/yheenca/image/upload/v1669896468/artsy/carousel/7ac8b34088537c7fb6bb14e50f5cdbbe_jh73wn.jpg",
 ];
 
-export const AuctionDisplayImages = [
+export const UpcomingAuctionImages = [
   "https://res.cloudinary.com/yheenca/image/upload/v1670759545/artsy/product/b3c47fcef0ecd8bb9fde6c98f9e9ba19_boz5yf.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1670400842/artsy/product/ryan-stefan-5K98ScREEUY-unsplash_caid1n.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1670400872/artsy/product/roman-tanaseychuk--esJNesS2J0-unsplash_c5q8br.jpg",
+  // "https://res.cloudinary.com/yheenca/image/upload/v1670400872/artsy/product/roman-tanaseychuk--esJNesS2J0-unsplash_c5q8br.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1670400842/artsy/product/chris-nguyen-tXmc2mVDxJc-unsplash_cpodlb.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1670400874/artsy/product/mihai-surdu-kzQEpvHkR00-unsplash_kd7xaw.jpg",
 ];

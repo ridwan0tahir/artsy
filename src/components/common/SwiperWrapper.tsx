@@ -1,7 +1,6 @@
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import Products from "providers/ProductProvider";
 
 interface ISwiperWrapper {
   onSlideChange?: (swiper: SwiperCore) => void;
@@ -15,17 +14,30 @@ interface ISwiperWrapper {
   images: string[];
 }
 
-const SwiperWrapper = (props: ISwiperWrapper) => {
+const SwiperWrapper = ({
+  onSwiper,
+  onSlideChange,
+  initialSlide,
+  speed,
+  autoplay,
+  images,
+}: ISwiperWrapper) => {
+  const config = {
+    onSwiper,
+    onSlideChange,
+    initialSlide,
+    speed,
+    autoplay,
+    modules: [Autoplay, Navigation],
+    allowTouchMove: false,
+    rewind: true,
+    spaceBetween: 30,
+    className: "w-[358px]",
+  };
+
   return (
-    <Swiper
-      {...props}
-      modules={[Autoplay, Navigation]}
-      allowTouchMove={false}
-      rewind={true}
-      spaceBetween={30}
-      className="w-[358px]"
-    >
-      {props.images.map((image) => (
+    <Swiper {...config}>
+      {images.map((image) => (
         <SwiperSlide key={image}>
           <div className="h-[428px]">
             <img
