@@ -1,3 +1,11 @@
+import { FunctionComponent } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, EffectFade, Pagination, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
 import ButtonIcon from "components/common/ButtonIcon";
 import LinkButton from "components/common/LinkButton";
 import Chevron from "components/icons/Chevron";
@@ -34,13 +42,44 @@ export const UpcomingAuctionFooter = () => (
 );
 
 interface IUpcomingAuctionDisplay {
+  images: string[];
+}
+
+export const UpcomingAuctionDisplay: FunctionComponent<
+  IUpcomingAuctionDisplay
+> = ({ images }) => (
+  <Swiper
+    className="h-[336px] lg:h-[568px]"
+    allowTouchMove={false}
+    speed={3000}
+    modules={[EffectFade, Navigation, Pagination]}
+    effect={"fade"}
+    rewind={true}
+    navigation={{
+      nextEl: "#upcomingBtnNext",
+      prevEl: "#upcomingBtnPrev",
+    }}
+  >
+    {images.map((image, index) => (
+      <SwiperSlide key={index}>
+        <UpcomingAuctionImage cover={image} />
+      </SwiperSlide>
+    ))}
+  </Swiper>
+);
+
+interface IUpcomingAuctionImage {
   cover: string;
 }
 
-export const UpcomingAuctionDisplay = ({ cover }: IUpcomingAuctionDisplay) => {
+const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => {
   return (
     <figure className="w-full h-full">
-      <img className="w-full h-full object-cover" src={cover} alt="" />
+      <img
+        className="w-full h-full object-cover"
+        src={cover}
+        alt="Auction Images"
+      />
 
       <figcaption
         className="absolute bottom-0 left-0 grid auto-cols-auto py-8 w-full h-full

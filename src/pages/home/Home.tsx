@@ -1,12 +1,6 @@
 import { useContext, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectFade, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
-
 import {
   HeroMobileImages,
   HeroDesktopImages,
@@ -27,10 +21,6 @@ import { ProductContext } from "providers/ProductProvider";
 const Home = () => {
   const { products } = useContext(ProductContext);
 
-  const [heroDestopImages] = useState(HeroDesktopImages);
-  const [heroMobileImages] = useState(HeroMobileImages);
-  const [auctionImages] = useState(AuctionDisplayImages);
-
   const featuredProduct = useMemo(() => {
     return products.slice(0, 3);
   }, []);
@@ -44,9 +34,9 @@ const Home = () => {
           <div className="flex flex-col space-y-20">
             <HeroIntro />
             {matches ? (
-              <HeroDesktopDisplay images={heroDestopImages} />
+              <HeroDesktopDisplay images={HeroDesktopImages} />
             ) : (
-              <HeroMobileDisplay images={heroMobileImages} />
+              <HeroMobileDisplay images={HeroMobileImages} />
             )}
           </div>
         }
@@ -83,28 +73,7 @@ const Home = () => {
             relative text-white-01"
           >
             <UpcomingAuctionHeader />
-            <Swiper
-              allowTouchMove={false}
-              navigation={{
-                nextEl: "#upcomingBtnNext",
-                prevEl: "#upcomingBtnPrev",
-              }}
-              speed={3000}
-              autoplay={{
-                delay: 7000,
-                disableOnInteraction: false,
-              }}
-              modules={[EffectFade, Autoplay, Navigation, Pagination]}
-              effect={"fade"}
-              rewind={true}
-              className="h-[336px] lg:h-[568px]"
-            >
-              {auctionImages.map((image, index) => (
-                <SwiperSlide key={image + index}>
-                  <UpcomingAuctionDisplay cover={image} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <UpcomingAuctionDisplay images={AuctionDisplayImages} />
             <UpcomingAuctionFooter />
           </div>
         }

@@ -34,7 +34,7 @@ interface IImage {
   name: string;
 }
 const Image = ({ cover, name }: IImage) => (
-  <figure className="relative h-[15.9875rem] mb-4 group lg:m-0">
+  <figure className="relative h-[15.9875rem] mb-4 group lg:m-0 cursor-pointer">
     <img
       className="w-full h-full object-cover object-center"
       src={cover}

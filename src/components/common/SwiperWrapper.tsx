@@ -25,8 +25,8 @@ const SwiperWrapper = (props: ISwiperWrapper) => {
       spaceBetween={30}
       className="w-[358px]"
     >
-      {props.images.map((image, index) => (
-        <SwiperSlide key={image + index}>
+      {props.images.map((image) => (
+        <SwiperSlide key={image}>
           <div className="h-[428px]">
             <img
               className="w-full h-full object-cover"

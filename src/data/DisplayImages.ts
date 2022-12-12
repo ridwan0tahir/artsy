@@ -7,7 +7,6 @@ export const HeroMobileImages = [
 export const HeroDesktopImages = [
   "https://res.cloudinary.com/yheenca/image/upload/v1669896503/artsy/carousel/5b69a3fa7c3cbf449247e0ab9097f844_into9n.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1669896519/artsy/carousel/bad82b544a8fbcb3511bc96d86638c89_uogw8r.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1669896503/artsy/carousel/5b69a3fa7c3cbf449247e0ab9097f844_into9n.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1669896489/artsy/carousel/22a86de8c5f161cae0f15599bc3e3374_cngbhc.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1669896468/artsy/carousel/7ac8b34088537c7fb6bb14e50f5cdbbe_jh73wn.jpg",
 ];
