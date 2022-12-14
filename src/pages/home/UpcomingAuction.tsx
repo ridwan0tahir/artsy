@@ -50,8 +50,9 @@ export const UpcomingAuctionDisplay: FunctionComponent<
 > = ({ images }) => (
   <Swiper
     allowTouchMove={false}
-    speed={2000}
+    speed={3000}
     modules={[EffectFade, Autoplay, Navigation, Pagination]}
+    lazy={true}
     effect="fade"
     rewind={true}
     navigation={{
@@ -59,7 +60,7 @@ export const UpcomingAuctionDisplay: FunctionComponent<
       prevEl: "#upcomingBtnPrev",
     }}
     autoplay={{
-      delay: 5000,
+      delay: 7000,
       disableOnInteraction: false,
     }}
   >

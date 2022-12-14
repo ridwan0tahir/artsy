@@ -5,15 +5,16 @@ export const HeroMobileImages = [
 ];
 
 export const HeroDesktopImages = [
-  "https://res.cloudinary.com/yheenca/image/upload/v1669896503/artsy/carousel/5b69a3fa7c3cbf449247e0ab9097f844_into9n.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1669896519/artsy/carousel/bad82b544a8fbcb3511bc96d86638c89_uogw8r.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1669896489/artsy/carousel/22a86de8c5f161cae0f15599bc3e3374_cngbhc.jpg",
   "https://res.cloudinary.com/yheenca/image/upload/v1669896468/artsy/carousel/7ac8b34088537c7fb6bb14e50f5cdbbe_jh73wn.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1669896503/artsy/carousel/5b69a3fa7c3cbf449247e0ab9097f844_into9n.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1669896489/artsy/carousel/22a86de8c5f161cae0f15599bc3e3374_cngbhc.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1669896537/artsy/carousel/aef8e1ec5bbee5d6fb4e8b543c274295_b8isrf.jpg",
 ];
 
 export const UpcomingAuctionImages = [
-  "https://res.cloudinary.com/yheenca/image/upload/v1670759545/artsy/product/b3c47fcef0ecd8bb9fde6c98f9e9ba19_boz5yf.jpg",
-  // "https://res.cloudinary.com/yheenca/image/upload/v1670400872/artsy/product/roman-tanaseychuk--esJNesS2J0-unsplash_c5q8br.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1670400842/artsy/product/chris-nguyen-tXmc2mVDxJc-unsplash_cpodlb.jpg",
-  "https://res.cloudinary.com/yheenca/image/upload/v1670400874/artsy/product/mihai-surdu-kzQEpvHkR00-unsplash_kd7xaw.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1670986780/artsy/product/museum-g8aca269ff_640_njn9kx.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1670986780/artsy/product/national-history-museum-gfb4110baf_640_vmbo9y.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/hallway-g0982ba2fb_640_xdg50u.jpg",
+  "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/woman-gd603ea7e7_640_x42smy.jpg",
 ];

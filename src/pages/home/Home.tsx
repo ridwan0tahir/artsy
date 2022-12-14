@@ -73,7 +73,7 @@ const Home = () => {
             relative text-white-01"
           >
             <UpcomingAuctionHeader />
-            {<UpcomingAuctionDisplay images={HeroDesktopImages} />}
+            {<UpcomingAuctionDisplay images={UpcomingAuctionImages} />}
             <UpcomingAuctionFooter />
           </div>
         }

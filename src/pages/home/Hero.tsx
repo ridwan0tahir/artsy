@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SwiperCore from "swiper";
-import SwiperWrapper from "components/common/SwiperWrapper";
+import SwiperCore, { Autoplay, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export const HeroIntro = () => (
   <article className="text-center flex flex-col space-y-7 w-[90%] mx-auto lg:space-y-12">
@@ -55,10 +55,35 @@ export const HeroDesktopDisplay = ({ images }: IHeroDesktopDisplay) => {
     setSwipers((current) => [...current, swiper]);
   };
 
+  const child = (
+    <>
+      {images.map((image, index) => (
+        <SwiperSlide key={image} className="flex items-center">
+          <img
+            src={image}
+            alt="Display Image"
+            style={{
+              width: "100%",
+              height: index === 4 ? "70%" : "100%",
+              objectFit: "cover",
+            }}
+          />
+        </SwiperSlide>
+      ))}
+    </>
+  );
+
+  const config = {
+    modules: [Autoplay, Navigation],
+    allowTouchMove: false,
+    rewind: true,
+    spaceBetween: 30,
+  };
+
   return (
-    <div className="flex gap-10">
-      <SwiperWrapper
-        images={images}
+    <div className="flex justify-between space-x-5 h-full max-w-[1870px]">
+      <Swiper
+        {...config}
         speed={1000}
         autoplay={{ delay: 1000, disableOnInteraction: false }}
         initialSlide={0}
@@ -67,19 +92,51 @@ export const HeroDesktopDisplay = ({ images }: IHeroDesktopDisplay) => {
             .filter((swiper) => !swiper.destroyed)
             .forEach((swiper) => swiper.slideNext(1000))
         }
-      />
+        className="w-[358px] h-[328px] translate-y-8"
+      >
+        {" "}
+        {child}
+      </Swiper>
 
-      <SwiperWrapper
-        images={images}
+      <Swiper
+        {...config}
         initialSlide={1}
         onSwiper={handleSetSwipers}
-      />
+        className="w-[358px] h-[328px] translate-y-4"
+      >
+        {" "}
+        {child}
+      </Swiper>
 
-      <SwiperWrapper
-        images={images}
+      <Swiper
+        {...config}
         initialSlide={2}
         onSwiper={handleSetSwipers}
-      />
+        className="w-[358px] h-[328px] -translate-y-2"
+      >
+        {" "}
+        {child}
+      </Swiper>
+
+      <Swiper
+        {...config}
+        initialSlide={3}
+        onSwiper={handleSetSwipers}
+        className="w-[358px] h-[328px] translate-y-4"
+      >
+        {" "}
+        {child}
+      </Swiper>
+
+      <Swiper
+        {...config}
+        initialSlide={4}
+        onSwiper={handleSetSwipers}
+        className="w-[358px] h-[328px] translate-y-8"
+      >
+        {" "}
+        {child}
+      </Swiper>
     </div>
   );
 };
