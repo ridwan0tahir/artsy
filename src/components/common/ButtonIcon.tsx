@@ -2,10 +2,11 @@ import { FunctionComponent, MouseEventHandler, ReactNode } from "react";
 
 interface IButtonIcon {
   content: ReactNode;
+  disabled?: boolean;
+  className?: string;
   id?: string;
   type?: "button" | "submit" | "reset";
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  className?: string;
 }
 
 const ButtonIcon: FunctionComponent<IButtonIcon> = ({
@@ -14,8 +15,9 @@ const ButtonIcon: FunctionComponent<IButtonIcon> = ({
   type,
   onClick,
   className,
+  disabled,
 }) => {
-  const config = { id, type, onClick, className };
+  const config = { id, type, onClick, className, disabled };
   return <button {...config}>{content}</button>;
 };
 

@@ -645,9 +645,9 @@ const ProductData = [
   },
   {
     id: "product-16",
-    name: "Blender",
+    name: "Fatherhood",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670401024/artsy/product/judeus-samson-0UECcInuCR4-unsplash_i5iom8.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986781/artsy/product/person-gfd031b2ad_640_wfbqam.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Mexico",
@@ -687,14 +687,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Fashion",
+    category: "Editorial",
   },
 
   {
     id: "product-17",
-    name: "Trench Coats",
+    name: "Mystery Island",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400952/artsy/product/amanda-vick-zw_oaDbfzyE-unsplash_c118g2.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986780/artsy/product/nature-g1e9396a3d_640_hkdnxw.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "South Korea",
@@ -734,14 +734,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Fashion",
+    category: "Nature",
   },
 
   {
     id: "product-18",
-    name: "The Hairs",
+    name: "Refraction",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400950/artsy/product/ayo-ogunseinde-UqT55tGBqzI-unsplash_xexakt.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986780/artsy/product/prism-g76835bfbb_640_kqrpnz.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Brazil",
@@ -781,14 +781,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1400,
-    category: "Fashion",
+    category: "Optics",
   },
 
   {
     id: "product-19",
-    name: "Beauty in light",
+    name: "Road to Tshushima",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400942/artsy/product/oladimeji-odunsi-tUUmR82pq68-unsplash_b3b1ge.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986780/artsy/product/mountain-landscape-g0f0fc9918_640_zlvw00.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Nigeria",
@@ -828,14 +828,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Fashion",
+    category: "Nature",
   },
 
   {
     id: "product-20",
-    name: "Play",
+    name: "Origin",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400939/artsy/product/yaopey-yong-Lg0Zfs8MHi4-unsplash_hbfzs9.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/light-gb5272e107_640_zpocoo.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Denmark",
@@ -875,13 +875,13 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Art & Museum",
+    category: "Optics",
   },
   {
     id: "product-21",
-    name: "Mount Fuku",
+    name: "Lazer",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400930/artsy/product/david-marcu-78A265wPiO4-unsplash_c22t8k.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/laser-g58db6fa8d_640_kz41gm.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Japan",
@@ -921,14 +921,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Nature",
+    category: "Optics",
   },
 
   {
     id: "product-22",
-    name: "Rain Forest",
+    name: "Weight",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400928/artsy/product/lukasz-szmigiel-jFCViYFYcus-unsplash_z9x22j.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/man-g10156ffa5_640_r5yenf.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Mexico",
@@ -968,13 +968,13 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Nature",
+    category: "Editorial",
   },
   {
     id: "product-23",
-    name: "The Valley",
+    name: "Light with Life",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400927/artsy/product/qingbao-meng-01_igFr7hd4-unsplash_lwhlgv.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/laser-show-gaeef4a888_640_zt1etj.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Argentina",
@@ -1014,13 +1014,13 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 2200,
-    category: "Nature",
+    category: "Optics",
   },
   {
     id: "product-24",
-    name: "The View",
+    name: "Magestic Island",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400925/artsy/product/dave-hoefler-lsoogGC_5dg-unsplash_xlyp8m.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/hd-wallpaper-gabdb23872_640_ojscii.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Dubai",
@@ -1064,9 +1064,9 @@ const ProductData = [
   },
   {
     id: "product-25",
-    name: "The Narrow Path",
+    name: "The Cover",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400921/artsy/product/justin-kauffman-a8lTjWJJgLA-unsplash_y8n9k1.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986779/artsy/product/hijab-g63abf89fb_640_hdxteh.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "North Korea",
@@ -1105,14 +1105,14 @@ const ProductData = [
     ],
     status: ["Auction", "Sale"],
     price: "$135.90",
-    views: 1700,
-    category: "Nature",
+    views: 2500,
+    category: "Fashion",
   },
   {
     id: "product-26",
-    name: "The Blue Bird",
+    name: "The Street",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400918/artsy/product/vincent-van-zalinge-vUNQaTtZeOo-unsplash_lqj6mz.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/city-g60a630247_640_mt78et.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "India",
@@ -1152,13 +1152,13 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Nature",
+    category: "Art and Museum",
   },
   {
     id: "product-27",
-    name: "Drip",
+    name: "Newtonian Light",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400915/artsy/product/goutham-krishna-h5wvMCdOV3w-unsplash_ksjlid.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/hd-wallpaper-g24c5e0392_640_kojhwn.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Morocco",
@@ -1198,14 +1198,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Nature",
+    category: "Optics",
   },
 
   {
     id: "product-28",
-    name: "Abandon",
+    name: "Sea Shell",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400901/artsy/product/ganapathy-kumar-L75D18aVal8-unsplash_t59fnx.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/hd-wallpaper-g7e0c958ea_640_yfnpci.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Qatar",
@@ -1250,9 +1250,9 @@ const ProductData = [
 
   {
     id: "product-29",
-    name: "Wasteland",
+    name: "The Twin",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400899/artsy/product/wolfgang-hasselmann-pVr6wvUneMk-unsplash_rmofzd.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/children-g4e565ed98_640_ossbqz.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Saudi Arabia",
@@ -1292,14 +1292,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Nature",
+    category: "Fashion",
   },
 
   {
     id: "product-30",
-    name: "Water color",
+    name: "Hat Woman",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400907/artsy/product/dan-cristian-padure-CAzDtfNlsKs-unsplash_twdnu0.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/fashion-gb7bd48dfd_640_jwyhgp.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Australia",
@@ -1339,14 +1339,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Art & Museum",
+    category: "Fashion",
   },
 
   {
     id: "product-31",
-    name: "Feymann Optics",
+    name: "Accent Is Gold",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400904/artsy/product/fly-d-OLRXnzXFBjo-unsplash_bgzilp.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986778/artsy/product/body-painting-gc0ff36eb7_640_s2oktk.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "United States",
@@ -1386,14 +1386,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Optics",
+    category: "Editorial",
   },
 
   {
     id: "product-32",
-    name: "The Bouncing Light",
+    name: "The Power",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400891/artsy/product/umberto-FewHpO4VC9Y-unsplash_wpik6r.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/bodybuilder-gae8166766_640_nilt54.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Germany",
@@ -1433,14 +1433,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Optics",
+    category: "Editorial",
   },
 
   {
     id: "product-33",
-    name: "Newtonian Light",
+    name: "Wedding Dress",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400883/artsy/product/denny-muller-JyRTi3LoQnc-unsplash_it9jii.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/wedding-dresses-g4e00a99cb_640_rlt5ds.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Germany",
@@ -1480,14 +1480,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Optics",
+    category: "Fashion",
   },
 
   {
     id: "product-34",
-    name: "Tesla",
+    name: "Dark Cloud",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400883/artsy/product/jj-ying-8bghKxNU1j0-unsplash_nsfuxj.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/tree-ge0a87fabe_640_zzmaod.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Poland",
@@ -1527,14 +1527,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Optics",
+    category: "Nature",
   },
 
   {
     id: "product-35",
-    name: "The Brotherhood",
+    name: "Headless",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400875/artsy/product/yaopey-yong-oDKyhEjOBfc-unsplash_xwmgcx.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/statue-gc0794e039_640_k74bxs.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Nigeria",
@@ -1578,9 +1578,9 @@ const ProductData = [
   },
   {
     id: "product-36",
-    name: "Lone circle",
+    name: "Lone Scrap",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400864/artsy/product/dan-cristian-padure-9I2W5-7Kp4k-unsplash_aae3lq.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986777/artsy/product/antique-gc5c1443e8_640_wkgoaa.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "North Korea",
@@ -1624,9 +1624,9 @@ const ProductData = [
   },
   {
     id: "product-37",
-    name: "The Bridge",
+    name: "The Blacksmith",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400863/artsy/product/bryan-garces-yBNl9g-NOpU-unsplash_abljv1.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986776/artsy/product/blacksmith-g20eae79a7_640_elbx5f.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "England",
@@ -1666,14 +1666,14 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1800,
-    category: "Art & Museum",
+    category: "Editorial",
   },
 
   {
     id: "product-38",
-    name: "Half Face",
+    name: "The Play",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670400838/artsy/product/liza-rusalskaya-D0ad5ow9isg-unsplash_yedpjq.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986776/artsy/product/bicycle-g4c9449f79_640_w8fyrw.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Portugal",
@@ -1718,9 +1718,9 @@ const ProductData = [
 
   {
     id: "product-39",
-    name: "Rebirth",
+    name: "The Cube",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670401018/artsy/product/clarissa-carbungco-Xzhba5D2ZzA-unsplash_kxshhd.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986776/artsy/product/rubik-g1ac822ece_640_h0bctb.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "England",
@@ -1764,10 +1764,10 @@ const ProductData = [
   },
 
   {
-    id: "product-39",
-    name: "Demi Low",
+    id: "product-40",
+    name: "The Path",
     image_url:
-      "https://res.cloudinary.com/yheenca/image/upload/v1670401014/artsy/product/dami-adebayo-k6aQzmIbR1s-unsplash_tbrvk9.jpg",
+      "https://res.cloudinary.com/yheenca/image/upload/v1670986776/artsy/product/avenue-g286540f29_640_wp2tfx.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor pur",
     country: "Nigeria",
@@ -1807,7 +1807,7 @@ const ProductData = [
     status: ["Auction", "Sale"],
     price: "$135.90",
     views: 1700,
-    category: "Fashion",
+    category: "Nature",
   },
 ];
 

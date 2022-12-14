@@ -7,15 +7,22 @@ import {
   UpcomingAuctionImages,
 } from "data/DisplayImages";
 import Section from "components/layouts/Section";
-import FeaturedProductCard from "pages/home/FeaturedCard";
-import { HeroIntro, HeroMobileDisplay, HeroDesktopDisplay } from "./Hero";
+import FeaturedProductCard from "pages/components/home/FeaturedCard";
+import {
+  HeroIntro,
+  HeroMobileDisplay,
+  HeroDesktopDisplay,
+} from "./components/home/Hero";
 import {
   UpcomingAuctionDisplay,
   UpcomingAuctionFooter,
   UpcomingAuctionHeader,
-} from "./UpcomingAuction";
-import { ExplorePagesContent } from "./ExplorePages";
-import { TopCreatorsArticle, TopCreatorsDisplay } from "./TopCreators";
+} from "./components/home/UpcomingAuction";
+import { ExplorePagesContent } from "./components/home/ExplorePages";
+import {
+  TopCreatorsArticle,
+  TopCreatorsDisplay,
+} from "./components/home/TopCreators";
 import { ProductContext } from "providers/ProductProvider";
 
 const Home = () => {
