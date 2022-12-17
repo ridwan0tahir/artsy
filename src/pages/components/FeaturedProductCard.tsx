@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import Arrow from "components/icons/Arrow";
 import LinkButton from "components/common/LinkButton";
 
-interface IFeaturedCard {
+interface IFeaturedProductCard {
   id: string;
   name: string;
   cover: string;
@@ -11,7 +11,7 @@ interface IFeaturedCard {
   creators: { id: string; name: string; photo: string }[];
 }
 
-const FeaturedCard: FunctionComponent<IFeaturedCard> = ({
+const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
   id,
   name,
   cover,
@@ -20,20 +20,29 @@ const FeaturedCard: FunctionComponent<IFeaturedCard> = ({
 }) => {
   return (
     <>
-      <Image name={name} cover={cover} />
-      <Description name={name} description={description} creators={creators} />
+      <FeaturedProductCardImage name={name} cover={cover} />
+      <FeaturedProductCardDescription
+        name={name}
+        description={description}
+        creators={creators}
+      />
     </>
   );
 };
 
+export default FeaturedProductCard;
+
 /*
   Types and Component for the card image
 */
-interface IImage {
+interface IFeaturedProductCardImage {
   cover: string;
   name: string;
 }
-const Image = ({ cover, name }: IImage) => (
+const FeaturedProductCardImage = ({
+  cover,
+  name,
+}: IFeaturedProductCardImage) => (
   <figure className="relative h-[15.9875rem] mb-4 group lg:m-0 cursor-pointer">
     <img
       className="w-full h-full object-cover object-center"
@@ -65,12 +74,16 @@ const Image = ({ cover, name }: IImage) => (
 /*
   Types and Component for the card description
 */
-interface IDescription {
+interface IFeaturedProductCardDescription {
   name: string;
   description: string;
   creators: { id: string; name: string; photo: string }[];
 }
-const Description = ({ name, description, creators }: IDescription) => (
+const FeaturedProductCardDescription = ({
+  name,
+  description,
+  creators,
+}: IFeaturedProductCardDescription) => (
   <article className="lg:flex lg:flex-col lg:justify-between lg:group-even/order:order-first">
     <h3 className="font-stix font-bold text-fs-80 hidden lg:block">{name}</h3>
     <p className="font-normal text-black-04 leading-lh-40">{description}</p>
@@ -108,5 +121,3 @@ const Description = ({ name, description, creators }: IDescription) => (
     </div>
   </article>
 );
-
-export default FeaturedCard;

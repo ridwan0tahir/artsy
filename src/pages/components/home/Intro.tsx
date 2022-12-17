@@ -2,7 +2,7 @@ import { useState } from "react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-export const HeroIntro = () => (
+export const IntroText = () => (
   <article className="text-center flex flex-col space-y-7 w-[90%] mx-auto lg:space-y-12">
     <h1
       className="font-clash text-[2rem] text-black-03 lg:text-[5rem]
@@ -17,11 +17,11 @@ export const HeroIntro = () => (
   </article>
 );
 
-interface IHeroMobileDisplay {
+interface IMobileIntroDisplay {
   images: string[];
 }
 
-export const HeroMobileDisplay = ({ images }: IHeroMobileDisplay) => (
+export const MobileIntroDisplay = ({ images }: IMobileIntroDisplay) => (
   <ul className="relative h-[18.875rem] group w-[90%] mx-auto">
     {images.map((image, index) => (
       <li
@@ -43,11 +43,11 @@ export const HeroMobileDisplay = ({ images }: IHeroMobileDisplay) => (
   </ul>
 );
 
-interface IHeroDesktopDisplay {
+interface IDesktopIntroDisplay {
   images: string[];
 }
 
-export const HeroDesktopDisplay = ({ images }: IHeroDesktopDisplay) => {
+export const DesktopIntroDisplay = ({ images }: IDesktopIntroDisplay) => {
   const [swipers, setSwipers] = useState<SwiperCore[]>([]);
 
   const handleSetSwipers = (swiper: SwiperCore) => {
@@ -89,34 +89,30 @@ export const HeroDesktopDisplay = ({ images }: IHeroDesktopDisplay) => {
         swipers
           .filter((swiper) => !swiper.destroyed)
           .forEach((swiper) => swiper.slideNext(1000)),
-      className: "w-[358px] h-[328px] translate-y-8",
     },
-    {
+    ...Array(4).fill({
       ...mainConfig,
-      className: "w-[358px] h-[328px] translate-y-4",
       onSwiper: handleSetSwipers,
-    },
-    {
-      ...mainConfig,
-      className: "w-[358px] h-[328px] translate-y-2",
-      onSwiper: handleSetSwipers,
-    },
-    {
-      ...mainConfig,
-      className: "w-[358px] h-[328px] translate-y-4",
-      onSwiper: handleSetSwipers,
-    },
-    {
-      ...mainConfig,
-      className: "w-[358px] h-[328px] translate-y-8",
-      onSwiper: handleSetSwipers,
-    },
+    }),
+  ];
+
+  const classNames = [
+    "w-[358px] h-[328px] translate-y-8",
+    "w-[358px] h-[328px] translate-y-4",
+    "w-[358px] h-[328px] translate-y-2",
+    "w-[358px] h-[328px] translate-y-8",
+    "w-[358px] h-[328px] translate-y-4",
   ];
 
   return (
     <div className="flex justify-between space-x-5 h-full max-w-[1870px]">
       {configs.map((config, index) => (
-        <Swiper {...config} initialSlide={index}>
+        <Swiper
+          {...config}
+          initialSlide={index}
+          className={classNames[index]}
+          key={"swiper" + index}
+        >
           {swiperChild}
         </Swiper>
       ))}

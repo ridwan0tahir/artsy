@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import Section from "components/layouts/Section";
+import Section from "layouts/section/Section";
 import CollectionCard from "components/views/products/CollectionCard";
 import { useState, FunctionComponent } from "react";
 import { useLocation, useParams } from "react-router-dom";
@@ -130,7 +130,7 @@ const Product: FunctionComponent = () => {
       />
 
       <Section
-        label="More from this collection"
+        // label="More from this collection"
         content={
           <Swiper
             className="mySwiper"

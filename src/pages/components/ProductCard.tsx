@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 interface IProductCard {
   id: string;
   name: string;
-  price: string;
+  price: number;
   cover: string;
 }
 
@@ -27,7 +27,7 @@ const ProductCard: FunctionComponent<IProductCard> = ({
       </div>
 
       <p className="flex justify-between items-center md:flex-col md:gap-5 md:items-start">
-        {name} <span>{`${price}`}</span>
+        {name} <span>{`$${price.toFixed(2)}`}</span>
       </p>
     </>
   );

@@ -1,6 +1,11 @@
 import ViewIcon from "components/common/ViewIcon";
+import { FunctionComponent } from "react";
 
-const Chevron = () => {
+interface IChevron {
+  className?: string;
+}
+
+const Chevron: FunctionComponent<IChevron> = ({ className }) => {
   return (
     <ViewIcon
       path={
@@ -9,6 +14,7 @@ const Chevron = () => {
           fill="#2F2F2F"
         />
       }
+      className={className}
       mobileSize={{ width: 16, height: 9 }}
       laptopSize={{ width: 16, height: 9 }}
       viewBox="0 0 16 9"

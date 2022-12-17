@@ -1,4 +1,4 @@
-export const TopCreatorsArticle = () => (
+export const TopCreatorsText = () => (
   <article className="w-[90%] mx-auto font-clash relative  pb-14 lg:pb-[250px]">
     <h5
       className="max-w-[264px] text-fs-50 font-semibold leading-lh-70 uppercase 

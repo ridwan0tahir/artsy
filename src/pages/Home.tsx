@@ -6,13 +6,13 @@ import {
   HeroDesktopImages,
   UpcomingAuctionImages,
 } from "data/DisplayImages";
-import Section from "components/layouts/Section";
-import FeaturedProductCard from "pages/components/home/FeaturedCard";
+import Section from "layouts/section/Section";
+import { FeaturedProductList } from "pages/components/home/Featured";
 import {
-  HeroIntro,
-  HeroMobileDisplay,
-  HeroDesktopDisplay,
-} from "./components/home/Hero";
+  IntroText,
+  MobileIntroDisplay,
+  DesktopIntroDisplay,
+} from "./components/home/Intro";
 import {
   UpcomingAuctionDisplay,
   UpcomingAuctionFooter,
@@ -20,10 +20,11 @@ import {
 } from "./components/home/UpcomingAuction";
 import { ExplorePagesContent } from "./components/home/ExplorePages";
 import {
-  TopCreatorsArticle,
+  TopCreatorsText,
   TopCreatorsDisplay,
 } from "./components/home/TopCreators";
 import { ProductContext } from "providers/ProductProvider";
+import SectionHeader from "layouts/section/SectionHeader";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
@@ -39,37 +40,23 @@ const Home = () => {
       <Section
         content={
           <div className="flex flex-col space-y-20">
-            <HeroIntro />
+            <IntroText />
             {matches ? (
-              <HeroDesktopDisplay images={HeroDesktopImages} />
+              <MobileIntroDisplay images={HeroDesktopImages} />
             ) : (
-              <HeroMobileDisplay images={HeroMobileImages} />
+              <DesktopIntroDisplay images={HeroMobileImages} />
             )}
           </div>
         }
       />
 
       <Section
-        label="Featured products"
         className="w-[90%] lg:w-[80%] mx-auto"
         content={
-          <ul role="list">
-            {featuredProduct.map((product) => (
-              <li
-                key={product.id}
-                className="py-8 lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:grid-flow-dense 
-                lg:gap-14 group/order lg:py-14 lg:border-t lg:border-black-01"
-              >
-                <FeaturedProductCard
-                  id={product.id}
-                  name={product.name}
-                  cover={product.image_url}
-                  description={product.description}
-                  creators={product.creators}
-                />
-              </li>
-            ))}
-          </ul>
+          <>
+            <SectionHeader label="Featured products" />
+            <FeaturedProductList products={featuredProduct} />
+          </>
         }
       />
 
@@ -80,7 +67,7 @@ const Home = () => {
             relative text-white-01"
           >
             <UpcomingAuctionHeader />
-            {<UpcomingAuctionDisplay images={UpcomingAuctionImages} />}
+            <UpcomingAuctionDisplay images={UpcomingAuctionImages} />
             <UpcomingAuctionFooter />
           </div>
         }
@@ -98,7 +85,7 @@ const Home = () => {
       <Section
         content={
           <div className="bg-black-07 relative">
-            <TopCreatorsArticle />
+            <TopCreatorsText />
             <TopCreatorsDisplay />
           </div>
         }

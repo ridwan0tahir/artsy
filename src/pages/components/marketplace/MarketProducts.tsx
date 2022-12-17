@@ -1,42 +1,52 @@
+import { HiOutlineChevronDown } from "react-icons/hi";
 import ButtonIcon from "components/common/ButtonIcon";
 import Arrow from "components/icons/Arrow";
-import Chevron from "components/icons/Chevron";
 import ProductData from "data/ProductData";
-import ProductCard from "./ProductCard";
+import ProductCard from "../ProductCard";
 
-export const MarketBar = () => (
+interface IMarketProductBar {
+  showSortMenu: () => void;
+  showFilterMenu: () => void;
+}
+
+export const MarketProductBar = ({
+  showSortMenu,
+  showFilterMenu,
+}: IMarketProductBar) => (
   <div
     className="px-5 py-4 flex items-center justify-between 
-              drop-shadow bg-white mb-7 rounded-2xl font-normal text-fs-30"
+    drop-shadow bg-white mb-7 rounded-2xl font-normal text-fs-30"
   >
     <ButtonIcon
-      className="flex items-center gap-4"
+      onClick={showFilterMenu}
+      className="flex items-center gap-2"
       content={
         <>
-          Filter <Chevron />
+          Filter <HiOutlineChevronDown size={16} />
         </>
       }
     />
 
     <ButtonIcon
-      className="flex items-center gap-4"
+      onClick={showSortMenu}
+      className="flex items-center gap-2"
       content={
         <>
-          Sort by <Chevron />
+          Sort by <HiOutlineChevronDown size={16} />
         </>
       }
     />
   </div>
 );
 
-interface IProductList {
+interface IMarketProductList {
   products: typeof ProductData;
 }
 
-export const ProductList = ({ products }: IProductList) => (
+export const MarketProductList = ({ products }: IMarketProductList) => (
   <ul className="grid space-y-10 md:grid-cols-fluid mb-14">
     {products.map((product) => (
-      <li key={product.id} className=" p-3 shadow-md rounded-lg">
+      <li key={product.id} className=" p-3 shadow-sm rounded-lg">
         <ProductCard
           id={product.id}
           name={product.name}
@@ -48,14 +58,14 @@ export const ProductList = ({ products }: IProductList) => (
   </ul>
 );
 
-interface ILoadMoreButton {
+interface IMarketProductButton {
   handleLoadMore: () => void;
   disabled: boolean;
 }
-export const LoadMoreButton = ({
+export const MarketProductButton = ({
   handleLoadMore,
   disabled,
-}: ILoadMoreButton) => (
+}: IMarketProductButton) => (
   <p className="text-fs-50 leading-lh-50 flex items-center justify-end gap-x-4">
     Load more
     <ButtonIcon

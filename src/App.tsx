@@ -1,5 +1,5 @@
-import Footer from "components/views/Footer";
-import Header from "components/views/Header";
+import Footer from "layouts/Footer";
+import Header from "layouts/Header";
 import Home from "pages/Home";
 import Marketplace from "pages/Marketplace";
 import Auction from "pages/Auction";

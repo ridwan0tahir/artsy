@@ -6,7 +6,7 @@ import Cart from "components/icons/Cart";
 import Menu from "components/icons/Menu";
 import Notification from "components/icons/Notification";
 import Search from "components/icons/Search";
-import ButtonIcon from "../common/ButtonIcon";
+import ButtonIcon from "components/common/ButtonIcon";
 import NavLinks from "data/NavData";
 import Close from "components/icons/Close";
 import Chat from "components/icons/Chat";
