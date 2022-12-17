@@ -25,7 +25,7 @@ export const MarketSortModal = ({
         <Radio
           key={config.id}
           {...config}
-          value={Sort.NONE}
+          value={Number(Object.keys(Sort)[index])}
           checked={activeSort === Number(Object.keys(Sort)[index])}
           className="flex items-center justify-between py-2"
           handleChange={handleChange}

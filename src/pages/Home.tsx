@@ -1,30 +1,47 @@
 import { useContext, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 
+import { ProductContext } from "providers/ProductProvider";
+import SectionHeader from "layouts/section/SectionHeader";
+import Section from "layouts/section/Section";
+
 import {
   HeroMobileImages,
   HeroDesktopImages,
   UpcomingAuctionImages,
 } from "data/DisplayImages";
-import Section from "layouts/section/Section";
-import { FeaturedProductList } from "pages/components/home/Featured";
+
+/**
+  Intro section imports
+**/
 import {
   IntroText,
   MobileIntroDisplay,
   DesktopIntroDisplay,
 } from "./components/home/Intro";
+
+/**
+  Featured products section imports 
+**/
+import { FeaturedProductList } from "pages/components/home/Featured";
+
+/**
+  Upcoming auctions and exhibition section imports
+**/
 import {
   UpcomingAuctionDisplay,
   UpcomingAuctionFooter,
   UpcomingAuctionHeader,
 } from "./components/home/UpcomingAuction";
 import { ExplorePagesContent } from "./components/home/ExplorePages";
+
+/**
+  Top creators section imports 
+**/
 import {
   TopCreatorsText,
   TopCreatorsDisplay,
 } from "./components/home/TopCreators";
-import { ProductContext } from "providers/ProductProvider";
-import SectionHeader from "layouts/section/SectionHeader";
 
 const Home = () => {
   const { products } = useContext(ProductContext);
