@@ -42,9 +42,9 @@ const Home = () => {
           <div className="flex flex-col space-y-20">
             <IntroText />
             {matches ? (
-              <MobileIntroDisplay images={HeroDesktopImages} />
+              <DesktopIntroDisplay images={HeroDesktopImages} />
             ) : (
-              <DesktopIntroDisplay images={HeroMobileImages} />
+              <MobileIntroDisplay images={HeroMobileImages} />
             )}
           </div>
         }

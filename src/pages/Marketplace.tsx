@@ -13,8 +13,6 @@ import {
   MarketProductList,
   MarketProductButton,
 } from "./components/marketplace/MarketProducts";
-import Modal from "components/common/Modal";
-import Radio from "components/common/Radio";
 import {
   MarketFilterModal,
   MarketSortModal,
