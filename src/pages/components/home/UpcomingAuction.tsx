@@ -6,38 +6,57 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-import ButtonIcon from "components/common/ButtonIcon";
-import LinkButton from "components/common/LinkButton";
-import Chevron from "components/icons/Chevron";
-import LongArrow from "components/icons/LongArrow";
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 
-export const UpcomingAuctionHeader = () => (
-  <LinkButton
-    href="#"
+import Button from "components/common/Button";
+import LongArrow from "components/icons/LongArrow";
+import Section from "layouts/Section";
+import { UpcomingAuctionImages } from "data/DisplayImages";
+
+export default function UpcomingAuction() {
+  return (
+    <Section
+      className="upcomingGradient !py-[5%] px-[5%] lg:px-[10%] lg:py-0 
+      relative text-white-01"
+    >
+      <UpcomingAuctionHeader />
+      <UpcomingAuctionDisplay images={UpcomingAuctionImages} />
+      <UpcomingAuctionFooter />
+    </Section>
+  );
+}
+
+const UpcomingAuctionHeader = () => (
+  <Button
+    as="link"
+    to="#"
     className="hidden capitalize text-fs-80 py-6 lg:block"
-    content={
-      <>
-        See Upcoming Auctions and Exhibitions
-        <LongArrow />
-      </>
-    }
-  />
+  >
+    <>
+      See Upcoming Auctions and Exhibitions
+      <LongArrow />
+    </>
+  </Button>
 );
 
-export const UpcomingAuctionFooter = () => (
+const UpcomingAuctionFooter = () => (
   <div className="py-5 hidden lg:flex items-center space-x-5">
-    <ButtonIcon
+    <Button
+      as="button"
       id="upcomingBtnPrev"
       className="w-[4.357rem] h-[4.357rem] shadow-[7.77px_7.77px_11.66px_0px_hsla(0,0%,0%,0.15)] 
       rounded-full ml-auto flex items-center justify-center bg-[hsla(25,91%,39%,0.19)]"
-      content={<Chevron />}
-    />
-    <ButtonIcon
+    >
+      <HiOutlineChevronLeft />
+    </Button>
+    <Button
+      as="button"
       id="upcomingBtnNext"
       className="w-[4.357rem] h-[4.357rem] shadow-[7.77px_7.77px_11.66px_0px_hsla(0,0%,0%,0.15)] 
       rounded-full ml-auto flex items-center justify-center bg-[hsla(25,91%,39%,0.19)]"
-      content={<Chevron />}
-    />
+    >
+      <HiOutlineChevronRight />
+    </Button>
   </div>
 );
 
@@ -45,32 +64,34 @@ interface IUpcomingAuctionDisplay {
   images: string[];
 }
 
-export const UpcomingAuctionDisplay: FunctionComponent<
-  IUpcomingAuctionDisplay
-> = ({ images }) => (
-  <Swiper
-    allowTouchMove={false}
-    speed={3000}
-    modules={[EffectFade, Autoplay, Navigation, Pagination]}
-    lazy={true}
-    effect="fade"
-    rewind={true}
-    navigation={{
+const UpcomingAuctionDisplay: FunctionComponent<IUpcomingAuctionDisplay> = ({
+  images,
+}) => {
+  const configs = {
+    allowTouchMove: false,
+    speed: 3000,
+    modules: [EffectFade, Autoplay, Navigation, Pagination],
+    rewind: true,
+    navigation: {
       nextEl: "#upcomingBtnNext",
       prevEl: "#upcomingBtnPrev",
-    }}
-    autoplay={{
+    },
+    autoplay: {
       delay: 7000,
       disableOnInteraction: false,
-    }}
-  >
-    {images.map((image) => (
-      <SwiperSlide key={image}>
-        <UpcomingAuctionImage cover={image} />
-      </SwiperSlide>
-    ))}
-  </Swiper>
-);
+    },
+  };
+
+  return (
+    <Swiper {...configs} effect="fade">
+      {images.map((image) => (
+        <SwiperSlide key={image}>
+          <UpcomingAuctionImage cover={image} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
 
 interface IUpcomingAuctionImage {
   cover: string;
@@ -97,8 +118,8 @@ const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
         01
       </h4>
       <article
-        className="col-start-2 col-end-3 flex flex-col space-y-4 max-w-[628.85px]
-          uppercase"
+        className="col-start-2 col-end-3 flex flex-col space-y-4 lg:max-w-[628.85px]
+        uppercase  max-w-[280px]"
       >
         <h3 className="font-bellefair text-fs-40 font-normal lg:text-fs-60">
           MONALISA REDEFINED IN STYLE.
@@ -117,16 +138,12 @@ const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
           space-x-7 lg:col-start-3 lg:col-end-4 lg:self-end lg:space-x-7 mt-3 text-fs-20 
           lg:text-fs-50"
       >
-        <LinkButton
-          className="border-b-2 border-white "
-          href="#"
-          content={"See more"}
-        />
-        <LinkButton
-          className="p-2 border border-white rounded-lg"
-          href="#"
-          content={"Set a reminder"}
-        />
+        <Button className="border-b-2 border-white " to="#">
+          See more
+        </Button>
+        <Button className="p-2 border border-white rounded-lg" to="#">
+          Set a reminder
+        </Button>
       </div>
     </figcaption>
     <div className="imageGradient absolute left-0 top-0 w-full h-full z-20"></div>

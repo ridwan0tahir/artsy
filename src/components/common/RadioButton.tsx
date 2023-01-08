@@ -1,37 +1,34 @@
 import classNames from "classnames";
 import { BsCheck2 } from "react-icons/bs";
-import { ChangeEvent, useState } from "react";
+import {
+  ChangeEvent,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  useState,
+} from "react";
 
-interface IRadio {
-  id: string;
-  name: string;
-  value?: string | number;
-  checked?: boolean;
+interface IRadioButton extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   className?: string;
-  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Radio = ({
+const RadioButton = ({
   id,
-  name,
-  value,
   checked,
   label,
   className,
-  handleChange,
-}: IRadio) => {
+  ...rest
+}: IRadioButton) => {
   return (
     <label htmlFor={id} className={className}>
       {label}
       <div className="relative w-4 h-4">
         <input
-          type="radio"
-          name={name}
           id={id}
-          value={value}
+          type="radio"
           className="absolute right-0 block w-4 h-4 opacity-0 invisible"
-          onChange={handleChange}
+          checked={checked}
+          {...rest}
         />
 
         <BsCheck2
@@ -46,4 +43,4 @@ const Radio = ({
   );
 };
 
-export default Radio;
+export default RadioButton;

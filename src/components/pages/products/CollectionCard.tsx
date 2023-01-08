@@ -1,11 +1,13 @@
 import FavThick from "components/icons/FavThick";
-import FavThin from "components/icons/FavThin";
-import ButtonIcon from "../../common/ButtonIcon";
+import Button from "../../common/Button";
 
 const CollectionCard = () => {
   return (
     <div className="p-4 border border-black-03">
-      <ButtonIcon className="block ml-auto mb-2" content={<FavThick />} />
+      <Button className="block ml-auto mb-2">
+        {" "}
+        <FavThick />{" "}
+      </Button>
       <div className="h-[20rem] mb-2">
         <img
           className="w-full h-full object-cover"

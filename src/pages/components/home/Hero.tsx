@@ -1,9 +1,30 @@
-import classNames from "classnames";
 import { useState } from "react";
-import SwiperCore, { Autoplay, Navigation } from "swiper";
+import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import HeroDisplayConfigs from "configs/HeroDisplayConfigs";
+import Section from "layouts/Section";
+import { useMediaQuery } from "usehooks-ts";
+import { HeroDesktopImages, HeroMobileImages } from "data/DisplayImages";
 
-export const IntroText = () => (
+export default function Hero() {
+  const matches = useMediaQuery("(min-width:1024px)");
+
+  return (
+    <Section className="flex flex-col space-y-20">
+      <HeroText />
+      {matches ? (
+        <HeroDesktopBanner images={HeroDesktopImages} />
+      ) : (
+        <HeroMobileBanner images={HeroMobileImages} />
+      )}
+    </Section>
+  );
+}
+
+/**
+ * Component to display intro text
+ */
+const HeroText = () => (
   <article className="text-center flex flex-col space-y-7 w-[90%] mx-auto lg:space-y-12">
     <h1
       className="font-clash text-[2rem] text-black-03 lg:text-[5rem]
@@ -18,11 +39,13 @@ export const IntroText = () => (
   </article>
 );
 
-interface IMobileIntroDisplay {
+/**
+ * Component to display the animation of the images on mobile phones
+ */
+interface IHeroMobileBanner {
   images: string[];
 }
-
-export const MobileIntroDisplay = ({ images }: IMobileIntroDisplay) => (
+const HeroMobileBanner = ({ images }: IHeroMobileBanner) => (
   <ul className="relative h-[18.875rem] group w-[90%] mx-auto">
     {images.map((image, index) => (
       <li
@@ -44,11 +67,13 @@ export const MobileIntroDisplay = ({ images }: IMobileIntroDisplay) => (
   </ul>
 );
 
-interface IDesktopIntroDisplay {
+/**
+ * Component to display the animation of the images on desktops
+ */
+interface IHeroDesktopBanner {
   images: string[];
 }
-
-export const DesktopIntroDisplay = ({ images }: IDesktopIntroDisplay) => {
+const HeroDesktopBanner = ({ images }: IHeroDesktopBanner) => {
   const [swipers, setSwipers] = useState<SwiperCore[]>([]);
 
   const handleSetSwipers = (swiper: SwiperCore) => {
@@ -56,65 +81,25 @@ export const DesktopIntroDisplay = ({ images }: IDesktopIntroDisplay) => {
     setSwipers((current) => [...current, swiper]);
   };
 
-  const swiperChild = (
-    <>
-      {images.map((image, index) => (
-        <SwiperSlide key={image} className="flex items-center">
-          <img
-            src={image}
-            alt="Display Image"
-            style={{
-              width: "100%",
-              height: index === 4 ? "70%" : "100%",
-              objectFit: "cover",
-            }}
-          />
-        </SwiperSlide>
-      ))}
-    </>
-  );
-
-  const mainConfig = {
-    modules: [Autoplay, Navigation],
-    allowTouchMove: false,
-    rewind: true,
-    spaceBetween: 20,
-  };
-
-  const configs = [
-    {
-      ...mainConfig,
-      speed: 1000,
-      autoplay: { delay: 1000, disableOnInteraction: false },
-      onSlideChange: () =>
-        swipers
-          .filter((swiper) => !swiper.destroyed)
-          .forEach((swiper) => swiper.slideNext(1000)),
-    },
-    ...Array(4).fill({
-      ...mainConfig,
-      onSwiper: handleSetSwipers,
-    }),
-  ];
-
-  const translates = [
-    "translate-y-8",
-    "translate-y-4",
-    "translate-y-2",
-    "translate-y-8",
-    "translate-y-4",
-  ];
+  const configs = HeroDisplayConfigs(swipers, handleSetSwipers);
 
   return (
     <div className="flex justify-between space-x-5 h-full max-w-[1870px]">
       {configs.map((config, index) => (
-        <Swiper
-          {...config}
-          initialSlide={index}
-          className={classNames("w-[358px] h-[328px]", translates[index])}
-          key={"swiper" + index}
-        >
-          {swiperChild}
+        <Swiper {...config} initialSlide={index} key={"swiper" + index}>
+          {images.map((image, index) => (
+            <SwiperSlide key={image} className="flex items-center">
+              <img
+                src={image}
+                alt="Display Image"
+                style={{
+                  width: "100%",
+                  height: index === 4 ? "70%" : "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       ))}
     </div>

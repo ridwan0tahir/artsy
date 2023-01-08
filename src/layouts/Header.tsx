@@ -2,19 +2,19 @@ import { Link, useLocation } from "react-router-dom";
 import { useToggle } from "usehooks-ts";
 import classNames from "classnames";
 
-import Cart from "components/icons/Cart";
-import Menu from "components/icons/Menu";
 import Notification from "components/icons/Notification";
-import Search from "components/icons/Search";
-import ButtonIcon from "components/common/ButtonIcon";
-import NavLinks from "data/NavData";
-import Close from "components/icons/Close";
-import Chat from "components/icons/Chat";
-import { useLayoutEffect } from "react";
+import Button from "components/common/Button";
+import NavLinkConfigs from "configs/NavLinkConfigs";
+import { FunctionComponent, useLayoutEffect } from "react";
+import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import { GrClose } from "react-icons/gr";
+import { BsFillChatRightFill } from "react-icons/bs";
+import { IoMdSearch } from "react-icons/io";
+import { FaRegBell } from "react-icons/fa";
 
 interface IHeader {}
 
-const Header = () => {
+const Header: FunctionComponent<IHeader> = () => {
   const [navActive, toggleNavActive, setNavActive] = useToggle(false);
 
   const location = useLocation();
@@ -25,15 +25,19 @@ const Header = () => {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
+
+    return () => document.body.classList.remove("overflow-hidden");
   }, [navActive]);
 
   return (
     <div className="w-[90%] mx-auto py-5 flex justify-between items-center lg:py-12 md:w-10/12">
-      <ButtonIcon
-        onClick={() => setNavActive(true)}
+      <Button
+        as="button"
         className="lg:hidden"
-        content={<Menu />}
-      />
+        onClick={() => setNavActive(true)}
+      >
+        <AiOutlineMenu />
+      </Button>
 
       <Link to="/" className="text-fs-50 font-stix font-bold uppercase">
         Artsy.
@@ -53,11 +57,13 @@ const Header = () => {
           <Link to="/" className="text-fs-50 font-bold font-stix uppercase">
             Artsy.
           </Link>
-          <ButtonIcon onClick={() => setNavActive(false)} content={<Close />} />
+          <Button onClick={() => setNavActive(false)}>
+            <GrClose />
+          </Button>
         </div>
 
         <ul className="flex flex-col gap-5 lg:flex-row lg:gap-12">
-          {NavLinks.map((link) => (
+          {NavLinkConfigs.map((link) => (
             <li key={link.name}>
               <Link
                 className={classNames(
@@ -79,21 +85,25 @@ const Header = () => {
           ))}
         </ul>
 
-        <ButtonIcon
+        <Button
           className="w-16 h-16 rounded-full bg-blue-01 flex justify-center items-center 
           ml-auto mt-auto mb-10 lg:hidden"
-          content={<Chat />}
-        />
+        >
+          <BsFillChatRightFill />
+        </Button>
       </nav>
 
       <div className="flex items-center gap-4 lg:gap-8">
-        {[<Search />, <Cart />, <Notification />].map((comp, index) => (
-          <ButtonIcon
-            key={index}
-            content={comp}
-            className="last:hidden lg:last:inline lg:hover:-translate-y-1 lg:transition lg:ease-in-out lg:duration-100"
-          />
-        ))}
+        {[<IoMdSearch />, <AiOutlineShoppingCart />, <FaRegBell />].map(
+          (icon, index) => (
+            <Button
+              key={index}
+              className="last:hidden lg:last:inline lg:hover:-translate-y-1 lg:transition lg:ease-in-out lg:duration-100"
+            >
+              {icon}
+            </Button>
+          )
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import { FunctionComponent } from "react";
 
 import Arrow from "components/icons/Arrow";
-import LinkButton from "components/common/LinkButton";
+import Button from "components/common/Button";
+import { BsArrowRight } from "react-icons/bs";
 
 interface IFeaturedProductCard {
   id: string;
@@ -61,12 +62,14 @@ const FeaturedProductCardImage = ({
       <span className="font-clash text-fs-60 font-semibold text-white-01 hidden lg:block">
         View product
       </span>
-      <LinkButton
-        href="/marketplace/1"
+      <Button
+        as="link"
+        to="/marketplace/1"
         className="w-[4.875rem] h-[4.921875rem] rounded-full border border-white-01 
         flex items-center justify-center hover:bg-white-01/20 ease-linear duration-500"
-        content={<Arrow className="overflow-hidden" />}
-      />
+      >
+        <BsArrowRight color="white" className="overflow-hidden" size={34} />
+      </Button>
     </figcaption>
   </figure>
 );
@@ -111,13 +114,14 @@ const FeaturedProductCardDescription = ({
         64 major curators
       </p>
 
-      <LinkButton
-        href="/marketplace/1"
+      <Button
+        to="/marketplace/1"
         className="w-[4.875rem] h-[4.875rem] rounded-full border border-black-03 ml-auto
         items-center justify-center hover:bg-white-01/10 ease-linear duration-500
         hidden lg:flex"
-        content={<Arrow color="#616161" className="overflow-hidden" />}
-      />
+      >
+        <Arrow color="#616161" className="overflow-hidden" />
+      </Button>
     </div>
   </article>
 );

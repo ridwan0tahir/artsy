@@ -47,6 +47,7 @@ module.exports = {
         "black-07": "hsla(0, 0%, 89%, 1)",
         "black-08": "hsla(0, 0%, 0%, 0.57)",
         "black-09": "hsla(0, 0%, 0%, 0.04)",
+        "black-10": "hsla(94, 5%, 72%, 1)",
 
         "white-01": "hsla(0, 0%, 100%, 1)",
         "white-02": "hsla(0, 0%, 85%, 0.6)",
@@ -74,6 +75,7 @@ module.exports = {
 
       gridTemplateColumns: {
         fluid: "repeat(auto-fill, minmax(15rem, 1fr))",
+        filter: "repeat(auto-fill, minmax(min(8rem, 100%), 1fr))",
       },
     },
   },

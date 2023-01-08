@@ -1,4 +1,17 @@
-export const TopCreatorsText = () => (
+import Section from "layouts/Section";
+
+export default function TopCreators() {
+  return (
+    <Section>
+      <div className="bg-black-07 relative">
+        <TopCreatorsText />
+        <TopCreatorsDisplay />
+      </div>
+    </Section>
+  );
+}
+
+const TopCreatorsText = () => (
   <article className="w-[90%] mx-auto font-clash relative  pb-14 lg:pb-[250px]">
     <h5
       className="max-w-[264px] text-fs-50 font-semibold leading-lh-70 uppercase 
@@ -33,7 +46,7 @@ export const TopCreatorsText = () => (
   </article>
 );
 
-export const TopCreatorsDisplay = () => (
+const TopCreatorsDisplay = () => (
   <div
     className=" w-[240px] h-[240px] absolute right-[20%] -bottom-9 bg-black-09
     lg:h-[100%] lg:w-[826px] lg:right-[5%] lg:-bottom-16"
