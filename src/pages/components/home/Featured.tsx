@@ -6,15 +6,15 @@ import { BsArrowRight } from "react-icons/bs";
 
 import ProductData from "data/ProductData";
 import Section from "layouts/Section";
+import { useAppSelector } from "slices/hooks";
 
-interface IFeatured {
-  products: typeof ProductData;
-}
-export default function Featured({ products }: IFeatured) {
+export default function Featured() {
+  const { globalProducts } = useAppSelector((store) => store.product);
+
   return (
     <Section className="w-[90%] lg:w-[80%] mx-auto">
       <Section.Header label="Featured products" />
-      <FeaturedProductList products={products} />
+      <FeaturedProductList products={globalProducts.slice(0, 3)} />
     </Section>
   );
 }

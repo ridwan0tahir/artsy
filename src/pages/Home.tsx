@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContext } from "providers/ProductProvider";
 import Hero from "./components/home/Hero";
 import Featured from "./components/home/Featured";
@@ -7,13 +7,15 @@ import ExplorePages from "./components/home/ExplorePages";
 import TopCreators from "./components/home/TopCreators";
 
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  useEffect(() => {
+    document.title = "Artsy | Home";
+  }, []);
 
   return (
     <>
       <Hero />
 
-      <Featured products={products.slice(0, 3)} />
+      <Featured />
 
       <UpcomingAuction />
 

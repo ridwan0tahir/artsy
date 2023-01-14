@@ -5,50 +5,45 @@ import {
   useEffect,
   useLayoutEffect,
   useMemo,
+  useRef,
+  useState,
 } from "react";
 import ProductSortConfigs from "configs/ProductSortConfigs";
 import RadioButton from "components/common/RadioButton";
 
 import ProductData from "data/ProductData";
 import { Sort } from "./MarketProductBar";
+import { useAppDispatch, useAppSelector } from "slices/hooks";
+import { setSortBy } from "slices/sort/SortSlice";
+import { setProducts } from "slices/products/ProductSlice";
 
-interface IProductSort {
-  activeSort: Sort;
-  setActiveSort: Dispatch<SetStateAction<Sort>>;
-  products: typeof ProductData;
-  setProducts: Dispatch<SetStateAction<typeof ProductData>>;
-}
-
-const ProductSort = ({
-  activeSort,
-  setActiveSort,
-  products,
-  setProducts,
-}: IProductSort) => {
-  // const worker = useMemo(() => {
-  //   return new Worker("/src/services/sort.ts", {
-  //     name: "worker-sort",
-  //     type: "module",
-  //   });
-  // }, []);
+const ProductSort = () => {
+  const { sortBy } = useAppSelector((store) => store.sort);
+  const { globalProducts: products } = useAppSelector((store) => store.product);
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setActiveSort(Number(e.target.value));
+    dispatch(setSortBy(Number(e.target.value)));
   };
 
-  useLayoutEffect(() => {
-    document.body.classList.add("overflow-hidden");
-
-    return () => document.body.classList.remove("overflow-hidden");
+  const worker = useMemo(() => {
+    return new Worker("/src/services/sort.ts", {
+      name: "worker_sort",
+      type: "module",
+    });
   }, []);
 
-  // useEffect(() => {
-  //   worker.postMessage({ activeSort, products });
-  //   worker.onmessage = (ev) => {
-  //     const products = ev.data;
-  //     setProducts(products);
-  //   };
-  // }, [activeSort]);
+  const [renderFlag, setRenderFlag] = useState(true);
+
+  useEffect(() => {
+    if (renderFlag) {
+      setRenderFlag(false);
+      return;
+    }
+
+    worker.postMessage({ sortBy, products });
+    worker.onmessage = (e) => dispatch(setProducts(e.data));
+  }, [sortBy]);
 
   return (
     <form
@@ -60,7 +55,7 @@ const ProductSort = ({
           {...config}
           key={config.id}
           className="flex items-center justify-between py-2"
-          checked={activeSort === Number(Object.keys(Sort)[index])}
+          checked={sortBy === Number(Object.keys(Sort)[index])}
           value={Number(Object.keys(Sort)[index])}
           onChange={handleChange}
         />

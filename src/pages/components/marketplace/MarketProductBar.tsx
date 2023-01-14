@@ -1,10 +1,25 @@
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import { PortalWithState } from "react-portal";
 
 import { HiOutlineChevronDown } from "react-icons/hi";
 import Button from "components/common/Button";
 import ProductData from "data/ProductData";
 import ProductSort from "./ProductSort";
+import ProductFilter from "./ProductFilter";
+import { useMediaQuery } from "usehooks-ts";
+import { useAppDispatch, useAppSelector } from "slices/hooks";
+import {
+  closeFilterModal,
+  openFilterModal,
+} from "slices/filter/FilterModalSlice";
+import { closeSortModal, openSortModal } from "slices/sort/SortModalSlice";
 
 export enum Sort {
   NONE,
@@ -13,56 +28,53 @@ export enum Sort {
   DATE,
 }
 interface IMarketProductBar {
-  showFilterMenu: () => void;
   products: typeof ProductData;
   setProducts: Dispatch<SetStateAction<typeof ProductData>>;
 }
 
 export const MarketProductBar = ({
-  showFilterMenu,
   products,
   setProducts,
 }: IMarketProductBar) => {
-  const [activeSort, setActiveSort] = useState(Sort.NONE);
+  const { isSortOpen } = useAppSelector((store) => store.sortModal);
+  const dispatch = useAppDispatch();
 
-  const worker = useMemo(() => {
-    return new Worker("/src/services/sort.ts", {
-      name: "worker-sort",
-      type: "module",
-    });
-  }, []);
+  const matches = useMediaQuery("(min-width: 1024px)");
 
-  useEffect(() => {
-    worker.postMessage({ activeSort, products });
-    worker.onmessage = (ev) => {
-      const products = ev.data;
-      setProducts(products);
-    };
-    console.log("Jillian");
-  }, [activeSort]);
+  useLayoutEffect(() => {
+    if (isSortOpen) {
+      document.body.classList.add("overflow-hidden");
+      return;
+    }
+
+    document.body.classList.remove("overflow-hidden");
+
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isSortOpen]);
 
   return (
     <div
       className="px-5 py-4 flex items-center justify-between 
       drop-shadow bg-white mb-7 rounded-2xl font-normal text-fs-30"
     >
-      <Button onClick={showFilterMenu} className="flex items-center gap-2">
-        Filter <HiOutlineChevronDown size={16} />
-      </Button>
-
       <PortalWithState
-        node={document && document.getElementById("modal")}
+        node={document && document.getElementById("filter__modal")}
         closeOnOutsideClick
+        onOpen={() => dispatch(openFilterModal())}
+        onClose={() => dispatch(closeFilterModal())}
       >
-        {({ openPortal, portal }) => (
+        {({ openPortal, portal, closePortal }) => (
           <>
-            <Button onClick={openPortal} className="flex items-center gap-2">
-              Sort by <HiOutlineChevronDown size={16} />
-            </Button>
+            {matches ? (
+              <p>Showing results</p>
+            ) : (
+              <Button onClick={openPortal} className="flex items-center gap-2">
+                Filter <HiOutlineChevronDown size={16} />
+              </Button>
+            )}
             {portal(
-              <ProductSort
-                activeSort={activeSort}
-                setActiveSort={setActiveSort}
+              <ProductFilter
+                close={closePortal}
                 products={products}
                 setProducts={setProducts}
               />
@@ -70,7 +82,32 @@ export const MarketProductBar = ({
           </>
         )}
       </PortalWithState>
-      <div id="modal" className="absolute right-0 top-16 w-full z-[1000]"></div>
+
+      <PortalWithState
+        node={document && document.getElementById("sort__modal")}
+        closeOnOutsideClick
+        onOpen={() => dispatch(openSortModal())}
+        onClose={() => dispatch(closeSortModal())}
+      >
+        {({ openPortal, portal }) => (
+          <>
+            <Button onClick={openPortal} className="flex items-center gap-2">
+              Sort by <HiOutlineChevronDown size={16} />
+            </Button>
+            {portal(<ProductSort />)}
+          </>
+        )}
+      </PortalWithState>
+      <div
+        id="sort__modal"
+        className="absolute right-0 top-16 w-full z-[1000]"
+      ></div>
+      {isSortOpen ? (
+        <div
+          className="fixed left-0 top-16 w-full h-screen bg-black-02/60
+          rounded-t-2xl"
+        ></div>
+      ) : null}
     </div>
   );
 };

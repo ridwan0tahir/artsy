@@ -1,91 +1,51 @@
-import {
-  ChangeEvent,
-  FormEvent,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useReducer,
-  useState,
-} from "react";
-import { ProductContext } from "providers/ProductProvider";
-import Section from "layouts/Section";
+import { useEffect, useLayoutEffect } from "react";
 import classNames from "classnames";
 import ProductFilter from "./components/marketplace/ProductFilter";
 import MarketDisplay from "./components/marketplace/MarketDisplay";
+import { useAppSelector } from "slices/hooks";
 
-interface IModalAction {
-  type: "SHOWFILTER" | "SHOWSORT";
-  payload: boolean;
-}
-interface IModalState {
-  sort: boolean;
-  filter: boolean;
-}
+export default function Marketplace() {
+  useEffect(() => {
+    document.title = "Artsy | Marketplace";
+  }, []);
 
-const modalReducer = (state: IModalState, action: IModalAction) => {
-  switch (action.type) {
-    case "SHOWFILTER":
-      return { ...state, filter: action.payload };
-
-    case "SHOWSORT":
-      return { ...state, sort: action.payload };
-
-    default:
-      return state;
-  }
-};
-
-const Marketplace = () => {
-  const { products: globalProducts } = useContext(ProductContext);
-
-  const [products, setProducts] = useState(globalProducts);
-
-  const [modalState, modalDispatch] = useReducer(modalReducer, {
-    sort: false,
-    filter: false,
-  });
-
+  const { isFilterOpen } = useAppSelector((store) => store.filterModal);
   useLayoutEffect(() => {
-    if (
-      (modalState.sort && !modalState.filter) ||
-      (!modalState.sort && modalState.filter)
-    ) {
+    if (isFilterOpen) {
       document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
+      return;
     }
 
+    document.body.classList.remove("overflow-hidden");
+
     return () => document.body.classList.remove("overflow-hidden");
-  }, [modalState.sort, modalState.filter]);
+  }, [isFilterOpen]);
 
   return (
     <div className="w-[90%] mx-auto lg:grid lg:grid-cols-[244px_1fr] gap-x-10">
-      <Section
+      <aside className="hidden lg:block">
+        <ProductFilter
+          close={() => null}
+          products={[]}
+          setProducts={() => null}
+        />
+      </aside>
+
+      <MarketDisplay />
+
+      <div
+        id="filter__modal"
         className={classNames(
-          "fixed top-0 w-[70%] h-full bg-white-01 z-[100] px-4 py-8 drop-shadow \
-          lg:unset",
+          "left-0 top-0 w-[70%] h-full bg-white-01 z-[50] px-4 py-10",
           {
-            ["-left-[1000px] invisible opacity-0 pointer-events-none"]:
-              !modalState.filter,
-            ["left-0 visible opacity-100 pointer-events-auto"]:
-              modalState.filter,
+            ["fixed "]: isFilterOpen,
+            ["hidden"]: !isFilterOpen,
           }
         )}
-      >
-        <ProductFilter
-          close={() => modalDispatch({ type: "SHOWFILTER", payload: false })}
-          products={products}
-          setProducts={setProducts}
-        />
-      </Section>
-
-      <MarketDisplay
-        products={products}
-        setProducts={setProducts}
-        showFilter={() => modalDispatch({ type: "SHOWFILTER", payload: true })}
-      />
+      ></div>
+      {isFilterOpen ? (
+        <div className="fixed left-0 top-0 w-full h-screen bg-black-02/60 z-10"></div>
+      ) : null}
     </div>
   );
-};
-
-export default Marketplace;
+}

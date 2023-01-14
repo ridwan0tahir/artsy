@@ -1,69 +1,30 @@
-import {
-  Dispatch,
-  FunctionComponent,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { FunctionComponent } from "react";
 import { MarketProductBar } from "./MarketProductBar";
 
 import Button from "components/common/Button";
 import Arrow from "components/icons/Arrow";
 import ProductData from "data/ProductData";
 import Section from "layouts/Section";
+import { useAppDispatch, useAppSelector } from "slices/hooks";
+import { updateCurrentPosition } from "slices/products/ProductSlice";
+import { Link } from "react-router-dom";
 
-const OFFSET = 5;
-
-interface IMarketDisplay {
-  products: typeof ProductData;
-  setProducts: Dispatch<SetStateAction<typeof ProductData>>;
-  showFilter: () => void;
-}
-export default function MarketDisplay({
-  products,
-  setProducts,
-  showFilter,
-}: IMarketDisplay) {
-  const [currIndex, setCurrIndex] = useState(0);
-  const [displayProducts, setDisplayProducts] = useState(
-    products.slice(currIndex, currIndex + OFFSET)
+export default function MarketDisplay() {
+  const { modifiedProducts, currentPosition } = useAppSelector(
+    (store) => store.product
   );
-
-  useEffect(() => {
-    setCurrIndex(0);
-    setDisplayProducts(products.slice(currIndex, currIndex + OFFSET));
-  }, [products]);
-
-  useEffect(() => {
-    if (currIndex <= 0 && !(currIndex >= displayProducts.length)) return;
-
-    if (currIndex + OFFSET <= products.length) {
-      setDisplayProducts((currProd) => [
-        ...currProd,
-        ...products.slice(currIndex, currIndex + OFFSET),
-      ]);
-      return;
-    }
-
-    setDisplayProducts((currProd) => [
-      ...currProd,
-      ...products.slice(currIndex, products.length),
-    ]);
-  }, [currIndex]);
-
-  const handleLoadMore = () => {
-    setCurrIndex((currIndex) => currIndex + OFFSET);
-  };
+  const dispatch = useAppDispatch();
 
   return (
     <Section>
-      <MarketProductBar
-        products={products}
-        setProducts={setProducts}
-        showFilterMenu={showFilter}
+      <MarketProductBar products={[]} setProducts={() => null} />
+      <MarketProductList
+        products={modifiedProducts.slice(0, currentPosition)}
       />
-      <MarketProductList products={displayProducts} />
-      <MarketProductButton handleLoadMore={handleLoadMore} disabled={false} />
+      <MarketProductButton
+        handleLoadMore={() => dispatch(updateCurrentPosition())}
+        disabled={currentPosition >= modifiedProducts.length}
+      />
     </Section>
   );
 }
@@ -103,7 +64,7 @@ const MarketProductCard: FunctionComponent<IMarketProductCard> = ({
   cover,
 }) => {
   return (
-    <>
+    <Link to={`${id}`}>
       <div
         className="h-[40vh] min-h-[17.5rem] mb-3 md:max-h-[17.5rem]
         md:rounded-lg md:overflow-hidden"
@@ -118,7 +79,7 @@ const MarketProductCard: FunctionComponent<IMarketProductCard> = ({
       <p className="flex justify-between items-center md:flex-col md:gap-5 md:items-start">
         {name} <span>{`$${price.toFixed(2)}`}</span>
       </p>
-    </>
+    </Link>
   );
 };
 

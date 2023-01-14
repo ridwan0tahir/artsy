@@ -25,33 +25,24 @@ enum Sort {
 
 const sortProducts = (activeSort: Sort, products: IProductData[]) => {
   if (activeSort === Sort.NONE) {
-    const data = [...products].sort((itemA, itemB) =>
+    const data = products.sort((itemA, itemB) =>
       itemA.id.localeCompare(itemB.id)
     );
     return data;
   } else if (activeSort === Sort.LOW) {
-    const data = [...products].sort(
-      (itemA, itemB) => itemA.price - itemB.price
-    );
+    const data = products.sort((itemA, itemB) => itemA.price - itemB.price);
     return data;
   } else if (activeSort === Sort.HIGH) {
-    const data = [...products].sort(
-      (itemA, itemB) => itemB.price - itemA.price
-    );
+    const data = products.sort((itemA, itemB) => itemB.price - itemA.price);
     return data;
   } else {
     return products;
   }
 };
 
-interface IWorkerEvent {
-  activeSort: Sort;
-  products: IProductData[];
-}
-
-self.onmessage = (e: MessageEvent<IWorkerEvent>) => {
-  const { activeSort, products } = e.data;
-  const message = sortProducts(activeSort, products);
+self.onmessage = (e: MessageEvent) => {
+  const { sortBy, products } = e.data;
+  const message = sortProducts(sortBy, products);
   postMessage(message);
 };
 
