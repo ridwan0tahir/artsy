@@ -13,15 +13,10 @@ export default function Section({ children, className }: ISection) {
 }
 
 interface ISectionHeader {
-  children?: ReactNode;
+  content?: ReactNode;
   label?: ReactNode;
-  className?: string;
 }
-Section.Header = function SectionHeader({
-  children,
-  label,
-  className,
-}: ISectionHeader) {
+Section.Header = function SectionHeader({ content, label }: ISectionHeader) {
   return (
     <>
       {label ? (
@@ -29,7 +24,7 @@ Section.Header = function SectionHeader({
           {label}
         </h2>
       ) : (
-        <div className={className}>{children}</div>
+        <>{content}</>
       )}
     </>
   );
