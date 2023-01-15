@@ -30,7 +30,7 @@ const Header: FunctionComponent<IHeader> = () => {
   }, [navActive]);
 
   return (
-    <div className="w-[90%] mx-auto py-5 flex justify-between items-center lg:py-12 md:w-10/12">
+    <div className="w-[90%] mx-auto py-5 flex justify-between items-center lg:py-12">
       <Button
         as="button"
         className="lg:hidden"
