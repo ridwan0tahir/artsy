@@ -44,7 +44,7 @@ const Dropdown = <T,>({ id, label, onSelect, options }: IDropdown<T>) => {
         placeholder=""
         options={options}
         inputId={id}
-        onChange={(newValue) => onSelect(newValue!.value)}
+        // onChange={(newValue) => onSelect(newValue!.value)}
       />
       <p></p>
     </div>
