@@ -1,5 +1,13 @@
+import LiveAuction from '@pages/components/auction/LiveAuction';
+import TopBid from './components/auction/TopBid';
+
 const Auction = () => {
-  return <div>Auction</div>;
+  return (
+    <>
+      <LiveAuction />
+      <TopBid />
+    </>
+  );
 };
 
 export default Auction;

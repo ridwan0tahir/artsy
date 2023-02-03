@@ -1,5 +1,11 @@
+import UpcomingDrop from './components/drop/UpcomingDrop';
+
 const Drop = () => {
-  return <div>Drop</div>;
+  return (
+    <>
+      <UpcomingDrop />
+    </>
+  );
 };
 
 export default Drop;

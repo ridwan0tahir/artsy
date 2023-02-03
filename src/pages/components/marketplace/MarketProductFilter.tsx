@@ -8,33 +8,33 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import Checkbox from "components/common/CheckboxButton";
+} from 'react';
+import Checkbox from '@components/common/Checkbox';
 
-import ProductFilterConfigs from "configs/ProductFilterConfigs";
-import RangeSlider from "components/common/RangeSlider";
-import ProductData from "data/ProductData";
-import { ProductContext } from "providers/ProductProvider";
-import { useAppDispatch, useAppSelector } from "slices/hooks";
+import ProductFilterConfigs from 'configs/ProductFilterConfigs';
+import RangeSlider from 'components/common/RangeSlider';
+import ProductData from '@data/products';
+import { useAppDispatch, useAppSelector } from 'store/store';
 import {
   addToArtist,
   addToCategory,
   removeFromArtist,
   removeFromCategory,
   setPrice,
-} from "slices/filter/FilterSlice";
-import { MdTune } from "react-icons/md";
+} from 'store/filter/FilterSlice';
+import { MdTune } from 'react-icons/md';
+import { IProduct } from '@utils/constants/product';
 
-interface IProductFilter {
+interface IMarketProductFilter {
   close: () => void;
-  products: typeof ProductData;
-  setProducts: Dispatch<SetStateAction<typeof ProductData>>;
+  products: IProduct[];
+  setProducts: Dispatch<SetStateAction<IProduct[]>>;
 }
-const ProductFilter: FunctionComponent<IProductFilter> = ({
+export default function MarketProductFilter({
   close,
   products,
   setProducts,
-}) => {
+}: IMarketProductFilter) {
   const { categories, artists, price } = useAppSelector(
     (store) => store.filter
   );
@@ -44,13 +44,13 @@ const ProductFilter: FunctionComponent<IProductFilter> = ({
     ProductFilterConfigs;
 
   const worker = useMemo(() => {
-    return new Worker("/src/services/filter.ts", {
-      name: "worker-filter",
-      type: "module",
+    return new Worker('/src/services/filter.ts', {
+      name: 'worker-filter',
+      type: 'module',
     });
   }, []);
 
-  const { products: globalP } = useContext(ProductContext);
+  // const { products: globalP } = useContext(ProductContext);
 
   // useEffect(() => {
   //   worker.postMessage({ selectedCategories, selectedArtist, price, products });
@@ -137,6 +137,4 @@ const ProductFilter: FunctionComponent<IProductFilter> = ({
       </div>
     </>
   );
-};
-
-export default ProductFilter;
+}

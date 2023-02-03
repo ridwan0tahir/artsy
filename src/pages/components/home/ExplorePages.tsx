@@ -1,7 +1,7 @@
-import Button from "components/common/Button";
-import Arrow from "components/icons/Arrow";
-import Section from "layouts/Section";
-import { ReactNode } from "react";
+import Button from 'components/common/Button';
+import Arrow from 'components/icons/Arrow';
+import Section from 'layouts/Section';
+import { ReactNode } from 'react';
 
 export default function ExplorePages() {
   return (
@@ -13,13 +13,13 @@ export default function ExplorePages() {
 
 const ExplorePagesList = () => {
   const configs = [
-    { content: "Explore marketplace", href: "/marketplace" },
-    { content: "See auctions", href: "/auction" },
+    { content: 'Explore marketplace', href: '/marketplace' },
+    { content: 'See auctions', href: '/auction' },
   ];
   return (
     <>
       {configs.map((config) => (
-        <ExplorePagesItem {...config} />
+        <ExplorePagesItem key={config.href} {...config} />
       ))}
     </>
   );

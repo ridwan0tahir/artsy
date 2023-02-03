@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  input[type="range"]::-webkit-slider-thumb {
+  input[type='range']::-webkit-slider-thumb {
     pointer-events: auto;
     cursor: pointer;
     width: 24px;
@@ -13,7 +13,7 @@
     @apply bg-black-03 ring-1 ring-black-03 hover:bg-white-01 hover:ring-black-03;
   }
 
-  input[type="range"]::-webkit-slider-thumb:hover {
+  input[type='range']::-webkit-slider-thumb:hover {
     @apply bg-white-01;
   }
 }

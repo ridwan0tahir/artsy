@@ -1,17 +1,17 @@
-import { FunctionComponent } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectFade, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
+import { FunctionComponent } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
-import Button from "components/common/Button";
-import LongArrow from "components/icons/LongArrow";
-import Section from "layouts/Section";
-import { UpcomingAuctionImages } from "data/DisplayImages";
+import Button from 'components/common/Button';
+import LongArrow from 'components/icons/LongArrow';
+import Section from 'layouts/Section';
+import { UpcomingAuctionImages } from 'data/displayImages';
 
 export default function UpcomingAuction() {
   return (
@@ -73,8 +73,8 @@ const UpcomingAuctionDisplay: FunctionComponent<IUpcomingAuctionDisplay> = ({
     modules: [EffectFade, Autoplay, Navigation, Pagination],
     rewind: true,
     navigation: {
-      nextEl: "#upcomingBtnNext",
-      prevEl: "#upcomingBtnPrev",
+      nextEl: '#upcomingBtnNext',
+      prevEl: '#upcomingBtnPrev',
     },
     autoplay: {
       delay: 7000,
@@ -125,7 +125,7 @@ const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
           MONALISA REDEFINED IN STYLE.
         </h3>
         <p className="font-poppins text-fs-10 lg:text-fs-20">
-          Start on : 08:00 GTS . Monday{" "}
+          Start on : 08:00 GTS . Monday{' '}
         </p>
         <p className="text-fs-20 lg:text-fs-30">
           GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH INVESTORS

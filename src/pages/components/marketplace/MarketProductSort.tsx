@@ -1,23 +1,13 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import ProductSortConfigs from "configs/ProductSortConfigs";
-import RadioButton from "components/common/RadioButton";
+import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import ProductSortConfigs from 'configs/ProductSortConfigs';
+import RadioButton from 'components/common/RadioButton';
 
-import ProductData from "data/ProductData";
-import { Sort } from "./MarketProductBar";
-import { useAppDispatch, useAppSelector } from "slices/hooks";
-import { setSortBy } from "slices/sort/SortSlice";
-import { setProducts } from "slices/products/ProductSlice";
+import { Sort } from './Market';
+import { useAppDispatch, useAppSelector } from 'store/store';
+import { setSortBy } from 'store/sort/SortSlice';
+import { setProducts } from 'store/products/ProductSlice';
 
-const ProductSort = () => {
+export default function MarketProductSort() {
   const { sortBy } = useAppSelector((store) => store.sort);
   const { globalProducts: products } = useAppSelector((store) => store.product);
   const dispatch = useAppDispatch();
@@ -27,9 +17,9 @@ const ProductSort = () => {
   };
 
   const worker = useMemo(() => {
-    return new Worker("/src/services/sort.ts", {
-      name: "worker_sort",
-      type: "module",
+    return new Worker('/src/services/sort.ts', {
+      name: 'worker_sort',
+      type: 'module',
     });
   }, []);
 
@@ -62,6 +52,4 @@ const ProductSort = () => {
       ))}
     </form>
   );
-};
-
-export default ProductSort;
+}

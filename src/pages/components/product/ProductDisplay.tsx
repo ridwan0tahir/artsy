@@ -1,33 +1,22 @@
-import classNames from "classnames";
-import Button from "components/common/Button";
-import Chevron from "components/icons/Chevron";
-import FavThin from "components/icons/FavThin";
-import Section from "layouts/Section";
-import { FunctionComponent, ReactNode, useState } from "react";
+import { addToCart } from '@store/cart/CartSlice';
+import { useAppDispatch } from '@store/store';
+import { IProduct } from '@utils/constants/product';
+import classNames from 'classnames';
+import Button from 'components/common/Button';
+import Chevron from 'components/icons/Chevron';
+import FavThin from 'components/icons/FavThin';
+import Section from 'layouts/Section';
+import { FunctionComponent, ReactNode, useState } from 'react';
 
 interface IProductDisplay {
-  name: string;
-  cover: string;
-  artist: string;
-  price: number;
-  views: number;
-  country: string;
-  description: string;
+  product: IProduct;
 }
-export default function ProductDisplay({
-  name,
-  cover,
-  artist,
-  price,
-  views,
-  country,
-  description,
-}: IProductDisplay) {
-  const contentConfig = { name, artist, price, views, country, description };
+export default function ProductDisplay({ product }: IProductDisplay) {
+  const { name, cover } = product;
   return (
     <Section className="lg:grid lg:grid-cols-[525px_1fr]">
       <ProductImage cover={cover} alt={name} />
-      <ProductContent {...contentConfig} />
+      <ProductContent product={product} />
     </Section>
   );
 }
@@ -52,48 +41,32 @@ const ProductImage: FunctionComponent<IProductImage> = ({ cover, alt }) => (
  * Product Content Component
  */
 interface IProductContent {
-  name: string;
-  price: number;
-  artist: string;
-  country: string;
-  views: number;
-  description: string;
+  product: IProduct;
 }
 
-const ProductContent: FunctionComponent<IProductContent> = ({
-  name,
-  price,
-  artist,
-  country,
-  views,
-  description,
-}) => {
+const ProductContent: FunctionComponent<IProductContent> = ({ product }) => {
+  const { name, description, price } = product;
   const items = [
     {
-      title: "cart",
+      title: 'cart',
       content: (className: string) => (
-        <Cart
-          className={className}
-          artist={artist}
-          country={country}
-          views={views}
-        />
+        <Cart product={product} className={className} />
       ),
     },
     {
-      title: "description",
+      title: 'description',
       content: (className: string) => (
         <Description className={className} description={description} />
       ),
     },
     {
-      title: "listing",
+      title: 'listing',
       content: (className: string) => (
         <Listing className={className} listing={description} />
       ),
     },
     {
-      title: "status",
+      title: 'status',
       content: (className: string) => (
         <Status className={className} status={description} />
       ),
@@ -131,15 +104,15 @@ const Accordion: FunctionComponent<IAccordion> = ({ items }) => {
             <li
               key={title + index}
               className={classNames(
-                "border-b border-black-03 py-5 lg:px-8 lg:py-12 lg:last:border-b-0"
+                'border-b border-black-03 py-5 lg:px-8 lg:py-12 lg:last:border-b-0'
               )}
             >
               <div
                 className={classNames(
-                  "flex items-center justify-between capitalize",
+                  'flex items-center justify-between capitalize',
                   {
-                    ["h-auto opacity-100 visible"]: !(activeItem === index),
-                    ["h-0 opacity-0 invisible"]: activeItem === index,
+                    ['h-auto opacity-100 visible']: !(activeItem === index),
+                    ['h-0 opacity-0 invisible']: activeItem === index,
                   }
                 )}
                 onClick={() => setActiveItem(index)}
@@ -150,10 +123,10 @@ const Accordion: FunctionComponent<IAccordion> = ({ items }) => {
                 </Button>
               </div>
               {content(
-                classNames("[transition:transform_.5s_ease-in-out]", {
-                  ["h-auto visible scale-y-100 origin-top"]:
+                classNames('[transition:transform_.5s_ease-in-out]', {
+                  ['h-auto visible scale-y-100 origin-top']:
                     activeItem === index,
-                  ["h-0 invisible scale-y-0"]: !(activeItem === index),
+                  ['h-0 invisible scale-y-0']: !(activeItem === index),
                 })
               )}
             </li>
@@ -191,16 +164,12 @@ const Status: FunctionComponent<IStatus> = ({ className, status }) => (
 );
 
 interface ICart extends IAccordionItem {
-  artist: string;
-  country: string;
-  views: number;
+  product: IProduct;
 }
-const Cart: FunctionComponent<ICart> = ({
-  className,
-  artist,
-  country,
-  views,
-}) => {
+const Cart: FunctionComponent<ICart> = ({ product, className }) => {
+  const dispatch = useAppDispatch();
+
+  const { artist, country, views } = product;
   return (
     <div className={className}>
       <p className="capitalize text-black-01 mb-4">
@@ -217,7 +186,11 @@ const Cart: FunctionComponent<ICart> = ({
       </div>
 
       <div className="flex items-center gap-5 flex-wrap">
-        <button type="button" className="btn-primary">
+        <button
+          type="button"
+          className="btn-primary"
+          onClick={() => dispatch(addToCart(product))}
+        >
           Add to cart
         </button>
         <Button className="p-4 border border-black-06 rounded-md">

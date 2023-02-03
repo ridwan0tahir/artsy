@@ -1,11 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import ProductData from "data/ProductData";
+import ProductData from '@data/products';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProduct } from '@utils/constants/product';
 
 const OFFSET = 6;
 
 interface IProductSlice {
-  globalProducts: typeof ProductData;
-  modifiedProducts: typeof ProductData;
+  globalProducts: IProduct[];
+  modifiedProducts: IProduct[];
   currentPosition: number;
 }
 
@@ -16,10 +17,10 @@ const initialState: IProductSlice = {
 };
 
 export const ProductSlice = createSlice({
-  name: "product",
+  name: 'product',
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<typeof ProductData>) => {
+    setProducts: (state, action: PayloadAction<IProduct[]>) => {
       return { ...state, modifiedProducts: action.payload };
     },
 

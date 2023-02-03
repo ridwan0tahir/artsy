@@ -1,26 +1,26 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
-import { useMediaQuery } from "usehooks-ts";
-import Section from "layouts/Section";
-import FavThick from "components/icons/FavThick";
+import { useMediaQuery } from 'usehooks-ts';
+import Section from 'layouts/Section';
+import FavThick from 'components/icons/FavThick';
 
-import { FunctionComponent, useRef } from "react";
-import ProductData from "data/ProductData";
-import Button from "components/common/Button";
+import { FunctionComponent } from 'react';
+import Button from 'components/common/Button';
+import { IProduct } from '@utils/constants/product';
 
 interface IProductCollection {
-  products: typeof ProductData;
+  products: IProduct[];
 }
 export default function ProductCollection({ products }: IProductCollection) {
-  const matches = useMediaQuery("(min-width: 1024px)");
+  const matches = useMediaQuery('(min-width: 1024px)');
 
   return (
     <Section>
       <Section.Header
-        label={!matches ? "More from this collection" : null}
+        label={!matches ? 'More from this collection' : null}
         content={
           matches ? (
             <div
@@ -38,8 +38,8 @@ export default function ProductCollection({ products }: IProductCollection) {
       />
       <Swiper
         navigation={{
-          nextEl: "#next",
-          prevEl: "#prev",
+          nextEl: '#next',
+          prevEl: '#prev',
         }}
         slidesPerView={matches ? 3 : 1}
         spaceBetween={30}
@@ -48,7 +48,7 @@ export default function ProductCollection({ products }: IProductCollection) {
         {products.map((prod) => (
           <SwiperSlide key={prod.id}>
             <ProdCollectionCard
-              cover={prod.image_url}
+              cover={prod.cover}
               name={prod.name}
               price={prod.price}
             />
@@ -72,8 +72,8 @@ const ProdCollectionCard: FunctionComponent<IProdCollectionCard> = ({
   return (
     <div className="p-4 border border-black-03">
       <Button className="block ml-auto mb-2">
-        {" "}
-        <FavThick />{" "}
+        {' '}
+        <FavThick />{' '}
       </Button>
       <div className="h-[20rem] mb-2">
         <img className="w-full h-full object-cover" src={cover} alt={name} />

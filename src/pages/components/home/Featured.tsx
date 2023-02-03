@@ -1,12 +1,13 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from 'react';
+import { BsArrowRight } from 'react-icons/bs';
+import Section from '@layouts/Section';
+import { useAppSelector } from '@store/store';
 
-import Arrow from "components/icons/Arrow";
-import Button from "components/common/Button";
-import { BsArrowRight } from "react-icons/bs";
+import CREATORS from '@data/creatorsData';
+import { IProduct } from '@utils/constants/product';
 
-import ProductData from "data/ProductData";
-import Section from "layouts/Section";
-import { useAppSelector } from "slices/hooks";
+import Arrow from '@components/icons/Arrow';
+import Button from '@components/common/Button';
 
 export default function Featured() {
   const { globalProducts } = useAppSelector((store) => store.product);
@@ -23,7 +24,7 @@ export default function Featured() {
  * List component of the featured products
  */
 interface IFeaturedProductList {
-  products: typeof ProductData;
+  products: IProduct[];
 }
 
 const FeaturedProductList = ({ products }: IFeaturedProductList) => (
@@ -37,9 +38,9 @@ const FeaturedProductList = ({ products }: IFeaturedProductList) => (
         <FeaturedProductCard
           id={product.id}
           name={product.name}
-          cover={product.image_url}
+          cover={product.cover}
           description={product.description}
-          creators={product.creators}
+          creatorIds={product.creatorIds}
         />
       </li>
     ))}
@@ -54,7 +55,7 @@ interface IFeaturedProductCard {
   name: string;
   cover: string;
   description: string;
-  creators: { id: string; name: string; photo: string }[];
+  creatorIds: string[];
 }
 
 const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
@@ -62,8 +63,12 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
   name,
   cover,
   description,
-  creators,
+  creatorIds,
 }) => {
+  const creators = useMemo(() => {
+    return CREATORS.filter((creator) => creatorIds.includes(creator.id));
+  }, []);
+
   return (
     <>
       <figure className="relative h-[15.9875rem] mb-4 group lg:m-0 cursor-pointer">

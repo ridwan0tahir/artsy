@@ -1,13 +1,13 @@
-import { useState } from "react";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import HeroDisplayConfigs from "configs/HeroDisplayConfigs";
-import Section from "layouts/Section";
-import { useMediaQuery } from "usehooks-ts";
-import { HeroDesktopImages, HeroMobileImages } from "data/DisplayImages";
+import { useState } from 'react';
+import SwiperCore from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import HeroDisplayConfigs from 'configs/HeroDisplayConfigs';
+import Section from 'layouts/Section';
+import { useMediaQuery } from 'usehooks-ts';
+import { HeroDesktopImages, HeroMobileImages } from 'data/displayImages';
 
 export default function Hero() {
-  const matches = useMediaQuery("(min-width:1024px)");
+  const matches = useMediaQuery('(min-width:1024px)');
 
   return (
     <Section className="flex flex-col space-y-20">
@@ -53,7 +53,7 @@ const HeroMobileBanner = ({ images }: IHeroMobileBanner) => (
         className="w-[85%] min-w-[85%] mx-auto h-[18.875rem] absolute top-0 left-1/2
         -translate-x-1/2 origin-left [transition:rotate_.5s_ease-in]"
         style={{
-          rotate: index === 0 ? "0deg" : index === 1 ? "9.31deg" : "-9.31deg",
+          rotate: index === 0 ? '0deg' : index === 1 ? '9.31deg' : '-9.31deg',
           zIndex: index === 0 ? 3 : index === 1 ? 2 : 1,
         }}
       >
@@ -86,16 +86,16 @@ const HeroDesktopBanner = ({ images }: IHeroDesktopBanner) => {
   return (
     <div className="flex justify-between space-x-5 h-full max-w-[1870px]">
       {configs.map((config, index) => (
-        <Swiper {...config} initialSlide={index} key={"swiper" + index}>
+        <Swiper {...config} initialSlide={index} key={'swiper' + index}>
           {images.map((image, index) => (
             <SwiperSlide key={image} className="flex items-center">
               <img
                 src={image}
                 alt="Display Image"
                 style={{
-                  width: "100%",
-                  height: index === 4 ? "70%" : "100%",
-                  objectFit: "cover",
+                  width: '100%',
+                  height: index === 4 ? '70%' : '100%',
+                  objectFit: 'cover',
                 }}
               />
             </SwiperSlide>
