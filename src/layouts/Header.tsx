@@ -1,15 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useToggle } from 'usehooks-ts';
 import classNames from 'classnames';
-
-import Notification from 'components/icons/Notification';
 import Button from 'components/common/Button';
 import NavLinkConfigs from 'configs/NavLinkConfigs';
 import { FunctionComponent, useLayoutEffect } from 'react';
 import { AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai';
 import { GrClose } from 'react-icons/gr';
 import { BsFillChatRightFill } from 'react-icons/bs';
-import { IoMdSearch } from 'react-icons/io';
+import { BiSearch } from 'react-icons/bi';
 import { FaRegBell } from 'react-icons/fa';
 
 interface IHeader {}
@@ -30,16 +28,16 @@ const Header: FunctionComponent<IHeader> = () => {
   }, [navActive]);
 
   return (
-    <div className="w-[90%] mx-auto py-5 flex justify-between items-center lg:py-12">
+    <div className="px-3 py-5 flex justify-between items-center lg:py-12">
       <Button
         as="button"
         className="lg:hidden"
         onClick={() => setNavActive(true)}
       >
-        <AiOutlineMenu />
+        <AiOutlineMenu size={20} />
       </Button>
 
-      <Link to="/" className="text-fs-50 font-stix font-bold uppercase">
+      <Link to="/" className="text-[1.5rem] font-stix font-bold uppercase">
         Artsy.
       </Link>
 
@@ -54,11 +52,11 @@ const Header: FunctionComponent<IHeader> = () => {
         )}
       >
         <div className="w-full flex items-center justify-between lg:hidden">
-          <Link to="/" className="text-fs-50 font-bold font-stix uppercase">
+          <Link to="/" className="text-[1.5rem] font-bold font-stix uppercase">
             Artsy.
           </Link>
           <Button onClick={() => setNavActive(false)}>
-            <GrClose />
+            <GrClose size={20} />
           </Button>
         </div>
 
@@ -89,16 +87,19 @@ const Header: FunctionComponent<IHeader> = () => {
           className="w-16 h-16 rounded-full bg-blue-01 flex justify-center items-center 
           ml-auto mt-auto mb-10 lg:hidden"
         >
-          <BsFillChatRightFill />
+          <BsFillChatRightFill size={29} color="#FFF" />
         </Button>
       </nav>
 
       <div className="flex items-center gap-4 lg:gap-8">
-        <IoMdSearch />
+        <BiSearch size={20} />
 
         {[
-          { icon: <AiOutlineShoppingCart />, href: 'marketplace/checkout' },
-          { icon: <FaRegBell />, href: 'marketplace/checkout' },
+          {
+            icon: <AiOutlineShoppingCart size={20} />,
+            href: 'marketplace/checkout',
+          },
+          { icon: <FaRegBell size={20} />, href: 'marketplace/checkout' },
         ].map(({ icon, href }, index) => (
           <Button
             as="link"

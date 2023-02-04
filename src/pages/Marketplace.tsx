@@ -22,7 +22,7 @@ export default function Marketplace() {
   }, [isFilterOpen]);
 
   return (
-    <div className="w-[90%] mx-auto lg:grid lg:grid-cols-[244px_1fr] gap-x-10">
+    <div className="lg:grid lg:grid-cols-[244px_1fr] gap-x-10">
       <aside className="hidden lg:block">
         <MarketProductFilter
           close={() => null}

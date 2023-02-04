@@ -25,14 +25,20 @@ export default function Hero() {
  * Component to display intro text
  */
 const HeroText = () => (
-  <article className="text-center flex flex-col space-y-7 w-[90%] mx-auto lg:space-y-12">
+  <article
+    className="text-center flex flex-col items-center space-y-[30px] 
+    w-full lg:space-y-12"
+  >
     <h1
-      className="font-clash text-[2rem] text-black-03 lg:text-[5rem]
-      lg:max-w-[66.75rem] mx-auto "
+      className="font-clash text-[2rem] leading-[3rem] text-black-03 
+      lg:text-[5rem] lg:max-w-[66.75rem]"
     >
       Photography is poetry and beautiful untold stories
     </h1>
-    <p className="text-fs-30 lg:text-[1.75rem] lg:max-w-[57.875rem] mx-auto">
+    <p
+      className="text-[1rem] leading-[1.566875rem] 
+      lg:text-[1.75rem] lg:max-w-[57.875rem]"
+    >
       Flip through more than 10,000 vintage shots, old photograghs, historic
       images and captures seamlessly in one place. Register to get top access.
     </p>

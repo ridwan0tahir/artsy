@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, EffectFade, Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
@@ -8,16 +9,16 @@ import 'swiper/css/effect-fade';
 
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
-import Button from 'components/common/Button';
-import LongArrow from 'components/icons/LongArrow';
-import Section from 'layouts/Section';
-import { UpcomingAuctionImages } from 'data/displayImages';
+import Button from '@components/common/Button';
+import Section from '@layouts/Section';
+import { UpcomingAuctionImages } from '@data/displayImages';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
 export default function UpcomingAuction() {
   return (
     <Section
       className="upcomingGradient !py-[5%] px-[5%] lg:px-[10%] lg:py-0 
-      relative text-white-01"
+      relative text-white-01 -mx-3"
     >
       <UpcomingAuctionHeader />
       <UpcomingAuctionDisplay images={UpcomingAuctionImages} />
@@ -34,7 +35,7 @@ const UpcomingAuctionHeader = () => (
   >
     <>
       See Upcoming Auctions and Exhibitions
-      <LongArrow />
+      <IoIosArrowRoundForward />
     </>
   </Button>
 );
@@ -98,7 +99,7 @@ interface IUpcomingAuctionImage {
 }
 
 const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
-  <figure className="w-full h-[336px] lg:h-[568px]">
+  <figure className="w-full h-[16.8125rem] lg:h-[568px]">
     <img
       className="w-full h-full object-cover"
       src={cover}
@@ -107,36 +108,39 @@ const UpcomingAuctionImage = ({ cover }: IUpcomingAuctionImage) => (
     />
 
     <figcaption
-      className="absolute bottom-0 left-0 grid auto-cols-auto py-8 w-full h-full
+      className="absolute bottom-0 left-0 grid auto-cols-auto py-6 w-full h-full
         auto-grid-auto justify-items-center space-x-4 z-[30] px-2 lg:grid-rows-1 
         lg:h-auto lg:px-8 lg:py-12 lg:space-x-4"
     >
       <h4
-        className="col-start-1 col-end-2 font-bellefair text-fs-80 font-normal 
-          self-center lg:text-[4.829rem]"
+        className="col-start-1 col-end-2 font-bellefair text-[2.5rem] font-[400] 
+          leading-[2.865rem] self-center lg:text-[4.829rem]"
       >
         01
       </h4>
       <article
         className="col-start-2 col-end-3 flex flex-col space-y-4 lg:max-w-[628.85px]
-        uppercase  max-w-[280px]"
+        uppercase max-w-[280px]"
       >
-        <h3 className="font-bellefair text-fs-40 font-normal lg:text-fs-60">
+        <h3
+          className="font-bellefair text-[1.25rem] font-[400] leading-[1.4325rem] 
+          lg:text-fs-60"
+        >
           MONALISA REDEFINED IN STYLE.
         </h3>
-        <p className="font-poppins text-fs-10 lg:text-fs-20">
+        <p className="font-poppins text-[0.75rem] leading-[1.125rem] lg:text-fs-20">
           Start on : 08:00 GTS . Monday{' '}
         </p>
-        <p className="text-fs-20 lg:text-fs-30">
+        <p className="text-[0.625rem] leading-[0.84375rem] lg:text-fs-30">
           GET EXCLUSIVE VIEWING OF CONTEMPORARY ART AND CONNECT WITH INVESTORS
           AND AUCTIONEERS ACROSS THE WORLD BRINGING THEIR HIGHEST AND LOWEST
           BIDS.
         </p>
       </article>
       <div
-        className="col-start-2 col-end-3 flex items-center font-normal justify-self-end 
-          space-x-7 lg:col-start-3 lg:col-end-4 lg:self-end lg:space-x-7 mt-3 text-fs-20 
-          lg:text-fs-50"
+        className="col-start-2 col-end-3 flex items-center font-[400] justify-self-end 
+          space-x-7 lg:col-start-3 lg:col-end-4 lg:self-end lg:space-x-7 mt-3 text-[0.875rem]
+          leading-[1.18125rem] lg:text-fs-50"
       >
         <Button className="border-b-2 border-white " to="#">
           See more

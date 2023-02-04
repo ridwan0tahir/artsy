@@ -1,9 +1,9 @@
-import Section from "layouts/Section";
+import Section from '@layouts/Section';
 
 export default function TopCreators() {
   return (
     <Section>
-      <div className="bg-black-07 relative">
+      <div className="bg-black-07 relative -mx-3">
         <TopCreatorsText />
         <TopCreatorsDisplay />
       </div>
@@ -14,14 +14,14 @@ export default function TopCreators() {
 const TopCreatorsText = () => (
   <article className="w-[90%] mx-auto font-clash relative  pb-14 lg:pb-[250px]">
     <h5
-      className="max-w-[264px] text-fs-50 font-semibold leading-lh-70 uppercase 
-    lg:text-[55px] lg:leading-[85.52px] lg:max-w-[535px] "
+      className="max-w-[264px] text-[1.5rem] font-[600] leading-[2.3325rem] uppercase 
+      lg:text-[55px] lg:leading-[85.52px] lg:max-w-[535px] "
     >
       Top Creator of the week
     </h5>
     <p
-      className="text-fs-10 text-black-08 mt-4 lg:mt-[170px]
-    lg:text-[2rem] lg:leading-[41.6px] font-[200]"
+      className="text-[0.8125rem] leading-[1.05625rem] text-black-08 mt-4 
+      lg:mt-[170px] lg:text-[2rem] lg:leading-[41.6px] font-[200]"
     >
       “Everything always looked better in black and white. Everything always as
       if it were the first time; there’s always more people in a black and white
@@ -31,13 +31,13 @@ const TopCreatorsText = () => (
     </p>
 
     <h5
-      className="text-fs-70 font-bold leading-[49px] uppercase text-black-03
-    absolute right-0 -bottom-6 text-right lg:bottom-20 lg:text-[48px] 
-    lg:leading-[74.64px] lg:right-[5%]"
+      className="text-[2rem] font-[700] leading-[3.11rem] uppercase text-black-03
+      absolute right-0 -bottom-6 text-right lg:bottom-20 lg:text-[48px] 
+      lg:leading-[74.64px] lg:right-[5%]"
     >
       Circa
       <span
-        className="block text-[4rem] leading-[99.95px] line-through
+        className="block text-[4rem] leading-[6.246875rem] line-through
         lg:text-[170px] lg:leading-[264.34px]"
       >
         1985

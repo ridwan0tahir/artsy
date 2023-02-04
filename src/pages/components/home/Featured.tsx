@@ -5,15 +5,13 @@ import { useAppSelector } from '@store/store';
 
 import CREATORS from '@data/creatorsData';
 import { IProduct } from '@utils/constants/product';
-
-import Arrow from '@components/icons/Arrow';
 import Button from '@components/common/Button';
 
 export default function Featured() {
   const { globalProducts } = useAppSelector((store) => store.product);
 
   return (
-    <Section className="w-[90%] lg:w-[80%] mx-auto">
+    <Section>
       <Section.Header label="Featured products" />
       <FeaturedProductList products={globalProducts.slice(0, 3)} />
     </Section>
@@ -29,21 +27,18 @@ interface IFeaturedProductList {
 
 const FeaturedProductList = ({ products }: IFeaturedProductList) => (
   <ul role="list">
-    {products.map((product) => (
-      <li
-        key={product.id}
-        className="py-8 lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:grid-flow-dense 
-        lg:gap-14 group/order lg:py-14 lg:border-t lg:border-black-01"
-      >
-        <FeaturedProductCard
-          id={product.id}
-          name={product.name}
-          cover={product.cover}
-          description={product.description}
-          creatorIds={product.creatorIds}
-        />
-      </li>
-    ))}
+    {products.map(({ id, name, cover, description, creatorIds }) => {
+      const configs = { id, name, cover, description, creatorIds };
+      return (
+        <li
+          key={id}
+          className="py-8 lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:grid-flow-dense 
+          lg:gap-14 group/order lg:py-14 lg:border-t lg:border-black-01"
+        >
+          <FeaturedProductCard {...configs} />
+        </li>
+      );
+    })}
   </ul>
 );
 
@@ -71,7 +66,7 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
 
   return (
     <>
-      <figure className="relative h-[15.9875rem] mb-4 group lg:m-0 cursor-pointer">
+      <figure className="relative h-[15.625rem] mb-4 group lg:m-0 cursor-pointer">
         <img
           className="w-full h-full object-cover object-center"
           src={cover}
@@ -83,10 +78,16 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
           group-hover:visible ease-in-out duration-1000 lg:flex-row lg:justify-center lg:gap-10
           lg:items-center"
         >
-          <h3 className="font-clash text-fs-60 font-semibold text-white-01 text-right lg:hidden">
+          <h3
+            className="font-clash text-[1.875rem] font-[600] text-white-01 
+            text-right lg:hidden"
+          >
             {name}
           </h3>
-          <span className="font-clash text-fs-60 font-semibold text-white-01 hidden lg:block">
+          <span
+            className="font-clash text-[1.875rem] font-[600] text-white-01 
+            hidden lg:block"
+          >
             View product
           </span>
           <Button
@@ -100,10 +101,12 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
         </figcaption>
       </figure>
       <article className="lg:flex lg:flex-col lg:justify-between lg:group-even/order:order-first">
-        <h3 className="font-stix font-bold text-fs-80 hidden lg:block">
+        <h3 className="font-stix font-[700] text-fs-80 hidden lg:block">
           {name}
         </h3>
-        <p className="font-normal text-black-04 leading-lh-40">{description}</p>
+        <p className="font-[400] text-black-04 text-[0.9375rem] leading-[1.453125rem]">
+          {description}
+        </p>
 
         <div
           className="flex items-center gap-4 py-4 border-b border-black-01 
@@ -124,7 +127,7 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
             ))}
           </ul>
 
-          <p className="text-fs-30 font-semibold text-black-01 flex-wrap whitespace-nowrap">
+          <p className="text-[1rem] font-[600] text-black-01 flex-wrap whitespace-nowrap">
             64 major curators
           </p>
 
@@ -134,7 +137,7 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
             items-center justify-center hover:bg-white-01/10 ease-linear duration-500
             hidden lg:flex"
           >
-            <Arrow color="#616161" className="overflow-hidden" />
+            <BsArrowRight color="#616161" className="overflow-hidden" />
           </Button>
         </div>
       </article>

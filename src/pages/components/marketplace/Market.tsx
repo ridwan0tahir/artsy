@@ -1,23 +1,27 @@
 import { FunctionComponent } from 'react';
 import { Dispatch, SetStateAction, useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PortalWithState } from 'react-portal';
 
-import { HiOutlineChevronDown } from 'react-icons/hi';
-import MarketProductSort from '@pages/components/marketplace/MarketProductSort';
-import MarketProductFilter from '@pages/components/marketplace/MarketProductFilter';
 import { useMediaQuery } from 'usehooks-ts';
+
+import { HiOutlineChevronDown } from 'react-icons/hi';
+import { BsArrowRight } from 'react-icons/bs';
+
+import { useAppDispatch, useAppSelector } from '@store/store';
+import { updateCurrentPosition } from '@store/products/ProductSlice';
 import {
   closeFilterModal,
   openFilterModal,
 } from '@store/filter/FilterModalSlice';
 import { closeSortModal, openSortModal } from '@store/sort/SortModalSlice';
 
-import Button from 'components/common/Button';
-import Arrow from 'components/icons/Arrow';
-import Section from 'layouts/Section';
-import { useAppDispatch, useAppSelector } from 'store/store';
-import { updateCurrentPosition } from 'store/products/ProductSlice';
-import { Link } from 'react-router-dom';
+import MarketProductSort from '@pages/components/marketplace/MarketProductSort';
+import MarketProductFilter from '@pages/components/marketplace/MarketProductFilter';
+
+import Button from '@components/common/Button';
+import Section from '@layouts/Section';
+
 import { IProduct } from '@utils/constants/product';
 
 export default function Market() {
@@ -87,9 +91,12 @@ const MarketProductCard: FunctionComponent<IMarketProductCard> = ({
         />
       </div>
 
-      <p className="flex justify-between items-center md:flex-col md:gap-5 md:items-start">
-        {name} <span>{`$${price.toFixed(2)}`}</span>
-      </p>
+      <h3
+        className="flex justify-between items-center text-[1rem] leading-[1.57625rem]
+        font-[500] uppercase md:flex-col md:gap-5 md:items-start"
+      >
+        {name} <p>{`$${price.toFixed(2)}`}</p>
+      </h3>
     </Link>
   );
 };
@@ -99,17 +106,20 @@ interface IMarketLoadButton {
   disabled: boolean;
 }
 const MarketLoadButton = ({ handleLoadMore, disabled }: IMarketLoadButton) => (
-  <div className="text-fs-50 leading-lh-50 flex items-center justify-end gap-x-4">
+  <Button
+    onClick={handleLoadMore}
+    disabled={disabled}
+    className="text-[1.25rem] leading-[1.97rem] flex items-center justify-end 
+    font-[400] gap-x-4 ml-auto pr-[16px] disabled:opacity-50 group"
+  >
     Load more
-    <Button
-      onClick={handleLoadMore}
-      disabled={disabled}
-      className="w-[3.1325rem] h-[3.1325rem] rounded-full border border-black-03 
-        flex items-center justify-center"
-    >
-      <Arrow color="#616161" className="overflow-hidden" />
-    </Button>
-  </div>
+    <BsArrowRight
+      color="#616161"
+      size={34}
+      className="p-[0.53125rem] box-content rounded-full border border-black-03 
+      flex items-center justify-center group-hover:bg-[hsl(0,0%,90%)]"
+    />
+  </Button>
 );
 
 export enum Sort {
@@ -142,8 +152,9 @@ const MarketBar = ({ products, setProducts }: IMarketBar) => {
 
   return (
     <div
-      className="px-5 py-4 flex items-center justify-between 
-      drop-shadow bg-white mb-7 rounded-2xl font-normal text-fs-30"
+      className="px-5 py-4 flex items-center justify-between font-[400]
+      leading-[1.51875rem] shadow-[4px_4px_64px_0px_hsla(0,0%,0%,0.1)]
+       bg-white mb-7 rounded-2xl text-[1.125rem]"
     >
       <PortalWithState
         node={document && document.getElementById('filter__modal')}
