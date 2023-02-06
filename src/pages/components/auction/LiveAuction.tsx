@@ -4,9 +4,10 @@ import Section from '@layouts/Section';
 import LiveAuctionData from '@data/liveAuction';
 import { ILiveAuctionProduct } from '@utils/constants/product';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import { FreeMode, Mousewheel, Navigation, Pagination } from 'swiper';
 import Button from '@components/common/Button';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
+import { useMediaQuery } from 'usehooks-ts';
 // import 'swiper/css';
 // import 'swiper/css/pagination';
 
@@ -15,7 +16,10 @@ interface ILiveAuction {}
 export default function LiveAuction({}: ILiveAuction) {
   return (
     <Section>
-      <h2 className="text-[1.25rem] leading-[1.6875rem] mb-7">
+      <h2
+        className="text-[1.25rem] leading-[1.6875rem] mb-7 lg:text-[1.75rem]
+        lg:leading-[2.3625rem]"
+      >
         Here's an overview of products actively on auction, explore!
       </h2>
       <LiveAuctionProductList auctionProducts={LiveAuctionData} />
@@ -29,14 +33,20 @@ interface ILiveAuctionProductList {
 const LiveAuctionProductList: FunctionComponent<ILiveAuctionProductList> = ({
   auctionProducts,
 }) => {
+  const matches = useMediaQuery('(max-width:1024px)');
+
   return (
     <Swiper
-      slidesPerView={1}
-      spaceBetween={30}
-      navigation={{
-        prevEl: '#live_prev',
-        nextEl: '#live_next',
-      }}
+      slidesPerView={matches ? 1 : 'auto'}
+      spaceBetween={matches ? 30 : 43}
+      navigation={
+        matches
+          ? {
+              prevEl: '#live_prev',
+              nextEl: '#live_next',
+            }
+          : false
+      }
       pagination={{
         el: '#live_pagination',
         clickable: true,
@@ -44,11 +54,16 @@ const LiveAuctionProductList: FunctionComponent<ILiveAuctionProductList> = ({
           return '<span class="' + className + '"></span>';
         },
       }}
-      modules={[Navigation, Pagination]}
+      freeMode={!matches}
+      grabCursor={true}
+      modules={[FreeMode, Navigation, Pagination]}
       className="relative"
     >
       {auctionProducts.map((prod) => (
-        <SwiperSlide key={prod.id} className="">
+        <SwiperSlide
+          key={prod.id}
+          className="min-h-[230px] h-[32vh] lg:w-[30rem] lg:h-[20rem]"
+        >
           <LiveAuctionProductCard name={prod.name} cover={prod.cover} />
         </SwiperSlide>
       ))}
@@ -73,7 +88,7 @@ const LiveAuctionProductList: FunctionComponent<ILiveAuctionProductList> = ({
       </div>
       <div
         id="live_pagination"
-        className="flex items-center justify-center mt-5"
+        className="flex items-center justify-center mt-5 lg:mt-14"
       ></div>
     </Swiper>
   );
@@ -90,15 +105,15 @@ const LiveAuctionProductCard: FunctionComponent<ILiveAuctionProductCard> = ({
 }) => {
   return (
     <figure
-      className="relative min-h-[230px] h-[32vh] w-full 
+      className="relative h-full  w-full
       rounded-[16px] overflow-hidden"
     >
       <img src={cover} alt={name} className="w-full h-full object-cover" />
       <figcaption
-        className="absolute bottom-4 left-1/2 -translate-x-1/2
+        className="absolute bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2
         px-7 py-2 w-max bg-white-01/40 backdrop-blur-sm rounded-lg
         font-stix font-[400] text-[1.25rem] leading-[1.5625rem] border
-        border-white-01 text-white-01"
+        border-white-01 text-white-01 lg:text-[2.5rem] lg:leading-[4rem]"
       >
         6hr: 40mins: 15s
       </figcaption>

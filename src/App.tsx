@@ -26,11 +26,11 @@ function App() {
       className="font-satoshi text-black-02 font-medium 
       w-screen min-h-screen bg-white-01"
     >
-      <header className="">
+      <header className="px-3 py-5 lg:py-12 lg:px-[120px]">
         <Header />
       </header>
 
-      <main className="px-3">
+      <main className="px-3 lg:px-[120px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="marketplace">

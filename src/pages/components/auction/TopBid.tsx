@@ -8,7 +8,10 @@ import { ITopBidProduct } from '@utils/constants/product';
 export default function TopBid() {
   return (
     <Section>
-      <h2 className="text-[1.25rem] leading-[1.6875rem] mb-7">
+      <h2
+        className="text-[1.25rem] leading-[1.6875rem] mb-7 lg:leading-[4rem]
+        lg:text-[2.25rem] lg:mb-16"
+      >
         Top bids from popular creators
       </h2>
 
@@ -22,7 +25,10 @@ interface ITopBidList {
 }
 const TopBidList: FunctionComponent<ITopBidList> = ({ topBidProducts }) => {
   return (
-    <ul className="grid gap-20">
+    <ul
+      className="grid gap-20 lg:gap-[110px] 
+    grid-cols-[repeat(auto-fit,minmax(30rem,1fr))]"
+    >
       {topBidProducts.map((prod) => (
         <li key={prod.id} className="">
           <TopBidCard {...prod} />
@@ -60,16 +66,17 @@ const TopBidCard: FunctionComponent<ITopBidCard> = ({
           alt={name}
           className="mb-2 rounded-lg w-full h-[200px] object-cover"
         />
-        <figcaption className="flex items-center justify-between">
-          <p className="text-[1.25rem] font-[700]">{name}</p>
-          <p className="text-[1.25rem] font-[700]">{`${price.toFixed(
-            2
-          )} ETH`}</p>
+        <figcaption
+          className="flex items-center justify-between text-[1.25rem] font-[700]
+          lg:text-[1.875rem] lg:leading-[4rem]"
+        >
+          <p>{name}</p>
+          <p>{`${price.toFixed(2)} ETH`}</p>
         </figcaption>
       </figure>
       <div
-        className="p-5 flex flex-col space-y-7 text-[1.25rem] 
-        leading-[1.6875rem] text-[#1E1E1E]"
+        className="p-5 flex flex-col space-y-7 text-[1.25rem] leading-[1.6875rem]
+        text-[#1E1E1E] lg:text-[1.875rem] lg:leading-[4rem]"
       >
         <p className="flex items-center gap-x-[27px]">
           Creator&nbsp;:
@@ -86,19 +93,19 @@ const TopBidCard: FunctionComponent<ITopBidCard> = ({
         bg-[hsla(0,11%,96%,1)] rounded-[10px]"
       >
         <p
-          className="col-start-1 col-end-2 row-start-1 row-end-2 
-          text-[1.125rem] text-[hsla(0,0%,38%,1)]"
+          className="col-start-1 col-end-2 row-start-1 row-end-2 text-[1.125rem]
+          text-[hsla(0,0%,38%,1)] lg:text-[2.5rem] lg:leading-[4rem]"
         >
           Current bid
         </p>
         <p
-          className="col-start-1 col-end-2 row-start-2 row-end-3
-          text-[1.25rem] leading-[1.6875rem]"
+          className="col-start-1 col-end-2 row-start-2 row-end-3 text-[1.25rem]
+          leading-[1.6875rem] lg:text-[2.5rem] lg:leading-[4rem]"
         >{`${highestBid.toFixed(2)} ETH`}</p>
         <Button
           className="col-start-2 col-end-3 row-start-1 row-end-3 self-center
           justify-self-end h-max w-max px-[44px] py-[12px] rounded-[2.34px]
-        bg-[hsla(234,58%,48%,1)] text-white-01"
+        bg-[hsla(234,58%,48%,1)] text-white-01 lg:text-[1.59875rem] lg:leading-[2.13rem]"
         >
           Place bid
         </Button>

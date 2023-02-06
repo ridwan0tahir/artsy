@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { useToggle } from 'usehooks-ts';
+import { useMediaQuery, useToggle } from 'usehooks-ts';
 import classNames from 'classnames';
 import Button from 'components/common/Button';
 import NavLinkConfigs from 'configs/NavLinkConfigs';
@@ -27,8 +27,10 @@ const Header: FunctionComponent<IHeader> = () => {
     return () => document.body.classList.remove('overflow-hidden');
   }, [navActive]);
 
+  const matches = useMediaQuery('(max-width: 1024px)');
+
   return (
-    <div className="px-3 py-5 flex justify-between items-center lg:py-12">
+    <div className="flex justify-between items-center">
       <Button
         as="button"
         className="lg:hidden"
@@ -37,7 +39,11 @@ const Header: FunctionComponent<IHeader> = () => {
         <AiOutlineMenu size={20} />
       </Button>
 
-      <Link to="/" className="text-[1.5rem] font-stix font-bold uppercase">
+      <Link
+        to="/"
+        className="text-[1.5rem] font-stix font-bold uppercase
+      lg:text-[2rem] lg:leading-[5.625rem]"
+      >
         Artsy.
       </Link>
 
@@ -65,7 +71,8 @@ const Header: FunctionComponent<IHeader> = () => {
             <li key={link.name}>
               <Link
                 className={classNames(
-                  'font-satoshi text-fs-50 text-black-03 md:font-normal lg:border-b-2 lg:border-transparent',
+                  'font-satoshi text-fs-50 text-black-03 md:font-normal lg:border-b-2\
+                  lg:border-transparent lg:text-[1.5rem] lg:leading-[2.025rem]',
                   {
                     ['lg:!border-black-03 lg:!font-medium']:
                       link.route === location.pathname,
@@ -84,28 +91,31 @@ const Header: FunctionComponent<IHeader> = () => {
         </ul>
 
         <Button
-          className="w-16 h-16 rounded-full bg-blue-01 flex justify-center items-center 
-          ml-auto mt-auto mb-10 lg:hidden"
+          className="w-16 h-16 rounded-full bg-blue-01 flex justify-center
+          items-center ml-auto mt-auto mb-10 lg:hidden"
         >
           <BsFillChatRightFill size={29} color="#FFF" />
         </Button>
       </nav>
 
       <div className="flex items-center gap-4 lg:gap-8">
-        <BiSearch size={20} />
+        <BiSearch size={matches ? 20 : 28} className="cursor-pointer" />
 
         {[
           {
-            icon: <AiOutlineShoppingCart size={20} />,
+            icon: <AiOutlineShoppingCart size={matches ? 20 : 28} />,
             href: 'marketplace/checkout',
           },
-          { icon: <FaRegBell size={20} />, href: 'marketplace/checkout' },
+          {
+            icon: <FaRegBell size={matches ? 20 : 28} />,
+            href: '/drop',
+          },
         ].map(({ icon, href }, index) => (
           <Button
             as="link"
             to={href}
             key={index}
-            className="last:hidden lg:last:inline lg:hover:-translate-y-1 lg:transition lg:ease-in-out lg:duration-100"
+            className="last:hidden lg:last:inline"
           >
             {icon}
           </Button>
