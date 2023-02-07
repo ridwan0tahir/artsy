@@ -32,7 +32,10 @@ export default function Market() {
 
   return (
     <Section>
-      <MarketBar products={[]} setProducts={() => null} />
+      <MarketBar
+        totalProducts={modifiedProducts.length}
+        viewSize={currentPosition}
+      />
       <MarketProductList
         products={modifiedProducts.slice(0, currentPosition)}
       />
@@ -52,7 +55,8 @@ export const MarketProductList = ({ products }: IMarketProductList) => (
     {products.map((product) => (
       <li
         key={product.id}
-        className="p-4 lg:bg-white-01 lg:drop-shadow-sm lg:rounded-2xl"
+        className="p-4 lg:bg-white-01 lg:rounded-2xl 
+        shadow-[0px_34px_68px_0px_hsla(222,55%,90%,0.36)] h-max"
       >
         <MarketProductCard
           id={product.id}
@@ -93,9 +97,10 @@ const MarketProductCard: FunctionComponent<IMarketProductCard> = ({
 
       <h3
         className="flex justify-between items-center text-[1rem] leading-[1.57625rem]
-        font-[500] uppercase md:flex-col md:gap-5 md:items-start"
+        font-[500] uppercase md:flex-col md:gap-5 md:items-start lg:text-[1.325rem]
+        lg:leading-[2.166875rem] lg:truncate lg:font-[400]"
       >
-        {name} <p>{`$${price.toFixed(2)}`}</p>
+        {name} <p className="lg:font-[700]">{`$${price.toFixed(2)}`}</p>
       </h3>
     </Link>
   );
@@ -129,11 +134,11 @@ export enum Sort {
   DATE,
 }
 interface IMarketBar {
-  products: IProduct[];
-  setProducts: Dispatch<SetStateAction<IProduct[]>>;
+  totalProducts: number;
+  viewSize: number;
 }
 
-const MarketBar = ({ products, setProducts }: IMarketBar) => {
+const MarketBar = ({ totalProducts, viewSize }: IMarketBar) => {
   const { isSortOpen } = useAppSelector((store) => store.sortModal);
   const dispatch = useAppDispatch();
 
@@ -154,7 +159,8 @@ const MarketBar = ({ products, setProducts }: IMarketBar) => {
     <div
       className="px-5 py-4 flex items-center justify-between font-[400]
       leading-[1.51875rem] shadow-[4px_4px_64px_0px_hsla(0,0%,0%,0.1)]
-       bg-white mb-7 rounded-2xl text-[1.125rem]"
+       bg-white mb-7 rounded-2xl text-[1.125rem] lg:mb-20 lg:text-[1.5rem]
+       lg:leading-[2.335rem] lg:py-6 lg:px-7 text-black-01 relative"
     >
       <PortalWithState
         node={document && document.getElementById('filter__modal')}
@@ -165,7 +171,7 @@ const MarketBar = ({ products, setProducts }: IMarketBar) => {
         {({ openPortal, portal, closePortal }) => (
           <>
             {matches ? (
-              <p>Showing results</p>
+              <p>{`Showing 1 - ${viewSize} of ${totalProducts} results`}</p>
             ) : (
               <Button onClick={openPortal} className="flex items-center gap-2">
                 Filter <HiOutlineChevronDown size={16} />
@@ -174,8 +180,8 @@ const MarketBar = ({ products, setProducts }: IMarketBar) => {
             {portal(
               <MarketProductFilter
                 close={closePortal}
-                products={products}
-                setProducts={setProducts}
+                products={[]}
+                setProducts={() => null}
               />
             )}
           </>
@@ -199,13 +205,10 @@ const MarketBar = ({ products, setProducts }: IMarketBar) => {
       </PortalWithState>
       <div
         id="sort__modal"
-        className="absolute right-0 top-16 w-full z-[1000]"
+        className="absolute right-0 left-0 top-16 w-screen z-[1000] -ml-3"
       ></div>
       {isSortOpen ? (
-        <div
-          className="fixed left-0 top-16 w-full h-screen bg-black-02/60
-          rounded-t-2xl"
-        ></div>
+        <div className="fixed left-0 top-36 w-full h-screen bg-black-02/60"></div>
       ) : null}
     </div>
   );

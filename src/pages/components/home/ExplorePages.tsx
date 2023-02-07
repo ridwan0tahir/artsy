@@ -6,7 +6,7 @@ import Section from '@layouts/Section';
 
 export default function ExplorePages() {
   return (
-    <Section className="pt-24 -mx-3">
+    <Section className="pt-24 -mx-3 lg:-mx-[120px]">
       <ExplorePagesList />
     </Section>
   );
@@ -33,7 +33,7 @@ interface IExplorePagesItem {
 const ExplorePagesItem = ({ content, href }: IExplorePagesItem) => (
   <p
     className="px-[5%] text-[1.5rem] leading-[2.025rem] flex items-center py-3 lg:py-7
-    border-y border-black-03 lg:text-fs-90 last:border-t-0 lg:px-[10%]"
+    border-y border-black-03 lg:text-[3rem] lg:leading-[4.05rem] last:border-t-0 lg:px-[120px]"
   >
     {content}
     <Button

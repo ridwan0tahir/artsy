@@ -37,7 +37,7 @@ export default function MarketProductSort() {
 
   return (
     <form
-      className="bg-white-01 drop-shadow px-5 py-3 rounded-2xl"
+      className="bg-white-01 drop-shadow px-5 py-3"
       onSubmit={(e) => e.preventDefault()}
     >
       {ProductSortConfigs.map((config, index) => (

@@ -2,17 +2,15 @@ import Section from '@layouts/Section';
 
 export default function TopCreators() {
   return (
-    <Section>
-      <div className="bg-black-07 relative -mx-3">
-        <TopCreatorsText />
-        <TopCreatorsDisplay />
-      </div>
+    <Section className="bg-black-07 relative -mx-3 lg:-mx-[120px]">
+      <TopCreatorsText />
+      <TopCreatorsDisplay />
     </Section>
   );
 }
 
 const TopCreatorsText = () => (
-  <article className="w-[90%] mx-auto font-clash relative  pb-14 lg:pb-[250px]">
+  <article className="px-[120px] font-clash relative  pb-14 lg:pb-[250px] lg:pt-20">
     <h5
       className="max-w-[264px] text-[1.5rem] font-[600] leading-[2.3325rem] uppercase 
       lg:text-[55px] lg:leading-[85.52px] lg:max-w-[535px] "
@@ -33,7 +31,7 @@ const TopCreatorsText = () => (
     <h5
       className="text-[2rem] font-[700] leading-[3.11rem] uppercase text-black-03
       absolute right-0 -bottom-6 text-right lg:bottom-20 lg:text-[48px] 
-      lg:leading-[74.64px] lg:right-[5%]"
+      lg:leading-[74.64px] lg:right-[120px]"
     >
       Circa
       <span
@@ -49,7 +47,7 @@ const TopCreatorsText = () => (
 const TopCreatorsDisplay = () => (
   <div
     className=" w-[240px] h-[240px] absolute right-[20%] -bottom-9 bg-black-09
-    lg:h-[100%] lg:w-[826px] lg:right-[5%] lg:-bottom-16"
+    lg:h-[90%] lg:w-[826px] lg:right-[120px] lg:-bottom-20"
   >
     <img
       className="w-full h-full object-cover"

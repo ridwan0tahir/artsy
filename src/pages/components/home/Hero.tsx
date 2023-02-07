@@ -31,13 +31,13 @@ const HeroText = () => (
   >
     <h1
       className="font-clash text-[2rem] leading-[3rem] text-black-03 
-      lg:text-[5rem] lg:max-w-[66.75rem]"
+      lg:text-[5rem] lg:leading-[7.835rem] lg:max-w-[66.75rem]"
     >
       Photography is poetry and beautiful untold stories
     </h1>
     <p
-      className="text-[1rem] leading-[1.566875rem] 
-      lg:text-[1.75rem] lg:max-w-[57.875rem]"
+      className="text-[1rem] leading-[1.566875rem] lg:text-[1.75rem] 
+      lg:leading-[2.7425rem] lg:max-w-[57.875rem]"
     >
       Flip through more than 10,000 vintage shots, old photograghs, historic
       images and captures seamlessly in one place. Register to get top access.

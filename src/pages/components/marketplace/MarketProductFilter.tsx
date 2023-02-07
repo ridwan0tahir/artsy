@@ -24,6 +24,7 @@ import {
 } from 'store/filter/FilterSlice';
 import { MdTune } from 'react-icons/md';
 import { IProduct } from '@utils/constants/product';
+import { useMediaQuery } from 'usehooks-ts';
 
 interface IMarketProductFilter {
   close: () => void;
@@ -79,20 +80,31 @@ export default function MarketProductFilter({
     }
   };
 
+  const matches = useMediaQuery('(max-width:1024px)');
+
   return (
     <>
       <button
         type="button"
         onClick={close}
-        className="flex items-center w-full gap-x-2 pb-1 mb-5 border-b-2 border-black-03"
+        className="flex items-center w-full gap-2 pb-1 mb-10 border-b-4 border-[hsla(62,16%,63%,1)]
+        text-[1.5rem] leading-[2rem] lg:text-[2rem] lg:leading-[3.151875rem] lg:gap-5"
       >
-        <MdTune />
+        <MdTune size={matches ? 24 : 36} />
         Filter
       </button>
-      <div className="grid space-y-8">
+      <div className="grid space-y-12 lg:space-y-20">
         <div>
-          <h3 className="mb-2 font-semibold">Category</h3>
-          <div className="grid grid-cols-filter justify-items-start gap-y-2 px-2">
+          <h3
+            className="mb-2 font-[500] text-[1.25rem] leading-[2.25rem]
+            lg:text-[1.75rem] lg:leading-[2.758rem]"
+          >
+            Category
+          </h3>
+          <div
+            className="grid grid-cols-filter justify-items-start gap-y-2 px-2
+            lg:gap-y-4"
+          >
             {categoryConfigs.map((configs) => (
               <Checkbox
                 key={configs.id}
@@ -100,15 +112,20 @@ export default function MarketProductFilter({
                 onChange={handleCategoryChange}
                 onClick={(e) => e.stopPropagation()}
                 checked={categories.includes(configs.label)}
-                className="flex flex-row-reverse items-center gap-x-2"
+                className="flex items-center gap-x-2 text-[1.125rem] lg:gap-x-4 lg:text-[1.25rem]"
               />
             ))}
           </div>
         </div>
 
         <div>
-          <h3 className="mb-2 font-semibold">Price</h3>
-          <p className="mb-4 px-2">{`$${price.min} - $${price.max}`}</p>
+          <h3
+            className="mb-2 font-[500] text-[1.25rem] leading-[2.25rem]
+            lg:text-[1.75rem] lg:leading-[2.758rem]"
+          >
+            Price
+          </h3>
+          <p className="mb-4 px-2 text-[1.125rem] lg:text-[1.25rem]">{`$${price.min} - $${price.max}`}</p>
           <RangeSlider
             min={0}
             max={50}
@@ -120,8 +137,16 @@ export default function MarketProductFilter({
         </div>
 
         <div>
-          <h3 className="mb-2 font-semibold">Artist</h3>
-          <div className="grid grid-cols-filter justify-items-start gap-y-2 px-2">
+          <h3
+            className="mb-2 font-[500] text-[1.25rem] leading-[2.25rem]
+            lg:text-[1.75rem] lg:leading-[2.758rem]"
+          >
+            Artist
+          </h3>
+          <div
+            className="grid grid-cols-filter justify-items-start gap-y-2 px-2
+            lg:gap-y-4"
+          >
             {artistConfigs.map((configs) => (
               <Checkbox
                 key={configs.id}
@@ -129,7 +154,7 @@ export default function MarketProductFilter({
                 onChange={handleArtistChange}
                 onClick={(e) => e.stopPropagation()}
                 checked={artists.includes(configs.value)}
-                className="flex flex-row-reverse items-center gap-x-2"
+                className="flex items-center gap-x-2 text-[1.125rem] lg:gap-x-4 lg:text-[1.25rem]"
               />
             ))}
           </div>

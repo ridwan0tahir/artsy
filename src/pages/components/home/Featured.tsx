@@ -12,7 +12,12 @@ export default function Featured() {
 
   return (
     <Section>
-      <Section.Header label="Featured products" />
+      <h2
+        className="font-bold text-[1.75rem] leading-[2.5rem] mb-8 mt-5
+        lg:text-[3rem] lg:leading-[4.05rem] lg:mb-10 lg:mt-8"
+      >
+        Featured Products
+      </h2>
       <FeaturedProductList products={globalProducts.slice(0, 3)} />
     </Section>
   );
@@ -66,7 +71,10 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
 
   return (
     <>
-      <figure className="relative h-[15.625rem] mb-4 group lg:m-0 cursor-pointer">
+      <figure
+        className="relative h-[15.625rem] mb-4 group lg:m-0 cursor-pointer
+        lg:h-[19.0625rem]"
+      >
         <img
           className="w-full h-full object-cover object-center"
           src={cover}
@@ -101,10 +109,13 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
         </figcaption>
       </figure>
       <article className="lg:flex lg:flex-col lg:justify-between lg:group-even/order:order-first">
-        <h3 className="font-stix font-[700] text-fs-80 hidden lg:block">
+        <h3 className="font-stix font-[700] text-[2.5rem] leading-[3.125rem] hidden lg:block">
           {name}
         </h3>
-        <p className="font-[400] text-black-04 text-[0.9375rem] leading-[1.453125rem]">
+        <p
+          className="font-[400] text-black-04 text-[0.9375rem] leading-[1.453125rem]
+          lg:text-[1.5rem] lg:leading-[2.025rem]"
+        >
           {description}
         </p>
 
@@ -127,7 +138,10 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
             ))}
           </ul>
 
-          <p className="text-[1rem] font-[600] text-black-01 flex-wrap whitespace-nowrap">
+          <p
+            className="text-[1rem] font-[600] text-black-01 flex-wrap whitespace-nowrap
+            lg:text-[1.5rem] lg:leading-[2.025rem]"
+          >
             64 major curators
           </p>
 
@@ -137,7 +151,11 @@ const FeaturedProductCard: FunctionComponent<IFeaturedProductCard> = ({
             items-center justify-center hover:bg-white-01/10 ease-linear duration-500
             hidden lg:flex"
           >
-            <BsArrowRight color="#616161" className="overflow-hidden" />
+            <BsArrowRight
+              color="#616161"
+              className="overflow-hidden"
+              size={40}
+            />
           </Button>
         </div>
       </article>

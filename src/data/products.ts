@@ -45,7 +45,7 @@ const PRODUCTS: IProduct[] = [
   },
   {
     id: 'product-03',
-    name: 'The Boolean Egyptian',
+    name: 'Boolean Egyptian',
     cover:
       'https://res.cloudinary.com/yheenca/image/upload/v1669896818/artsy/product/f3fde95f8e3bc2f6fee4e448074c8c47_za95et.jpg',
     description:
